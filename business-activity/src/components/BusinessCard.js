@@ -17,7 +17,7 @@ export function BusinessCard(props) {
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="230"
                   //  image='./image/Haha.jpg'
                    image={props.business.img}
                     alt="business logo"
