@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-async function getBusiness() {
+export async function getBusiness() {
     // let businessList = [];
     // try {
     //     const res = await axios.get("https://meetings-test.herokuapp.com/business");
@@ -57,13 +57,17 @@ async function getBusiness() {
     ];
     return temp;
 }
-export default async function BusinessForUsers() {
-    const businessList = await getBusiness();
+export default function BusinessForUsers() {
     const navigate = useNavigate();
+    let businessList=[];
+    async function getList(){
+        businessList =await getBusiness();
+    }
     return (
         <div id='business-div'>
+        <h3>business page</h3>
             {
-                businessList.map((business) => {
+                businessList?.length > 0 &&  businessList.map((business) => {
                     <>
                         <Card sx={{ maxWidth: 345 }} onClick={navigate('./BusinessDetails', { id: business.id })}>
                             <CardMedia
