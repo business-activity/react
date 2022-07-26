@@ -58,40 +58,57 @@ export async function getBusiness() {
     return temp;
 }
 export default function BusinessForUsers() {
-    let businessList=[];
-    businessList = getBusiness();
-    const navigate = useNavigate();
-    
+    const [businessList, setBusinessList] = React.useState([]);
+    React.useEffect(() => {
+        async function anyNameFunction2() {
+            const tempList = await getBusiness();
+            setBusinessList(tempList);
+        }
+        anyNameFunction2();
+    }, []);
+
     return (
-        
+
         <div id='business-div'>
-        <h3>business page</h3>
+            <h3>business page</h3>
             {
-                businessList===[]?<p>no business</p>:  businessList.map((business) => {
+                businessList === [] ? <p>no business</p> : businessList.map((business) => {
                     <>
-                        <Card sx={{ maxWidth: 345 }} onClick={navigate('./BusinessDetails', { id: business.id })}>
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                // image="../hahaha.png"
-                                image={business.img}
-                                alt="business logo"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {business.businessName}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    by {business.ownersName}
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small" onClick={navigate('./BusinessDetails', { id: business.id })}>Details</Button>
-                            </CardActions>
-                        </Card>
+                        <Business business={business}/>
                     </>
                 })
             }
         </div>
+    );
+}
+
+
+export function Business(props) {
+    const navigate = useNavigate();
+    return (
+        <>
+            <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    // image="../hahaha.png"
+                    image={props.business.img}
+                    alt="business logo"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {props.business.businessName}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        by {props.business.ownersName}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button size="small"
+                    onClick={navigate('/BusinessDetails', { id: props.business.id })}
+                    >Details</Button>
+                </CardActions>
+            </Card>
+        </>
     );
 }
