@@ -58,16 +58,16 @@ export async function getBusiness() {
     return temp;
 }
 export default function BusinessForUsers() {
-    const navigate = useNavigate();
     let businessList=[];
-    async function getList(){
-        businessList =await getBusiness();
-    }
+    businessList = getBusiness();
+    const navigate = useNavigate();
+    
     return (
+        
         <div id='business-div'>
         <h3>business page</h3>
             {
-                businessList?.length > 0 &&  businessList.map((business) => {
+                businessList===[]?<p>no business</p>:  businessList.map((business) => {
                     <>
                         <Card sx={{ maxWidth: 345 }} onClick={navigate('./BusinessDetails', { id: business.id })}>
                             <CardMedia
