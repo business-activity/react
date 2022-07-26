@@ -25,7 +25,7 @@ export default async function BusinessForUsers() {
     const businessList = await getBusiness();
     const navigate=useNavigate();
     return (
-        <>
+        <div id='business-div'>
             {
                 businessList.map((business) => {
                     <div onClick={navigate('./BusinessDetails',{id:business.id})}>
@@ -38,6 +38,6 @@ export default async function BusinessForUsers() {
                     </div>
                 })
             }
-        </>
+        </div>
     );
 }
