@@ -5,10 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
+
+
 import { useNavigate } from 'react-router-dom';
 
-export default function BusinessDetails() {
+
+
+export default function BusinessDetails(props) {
+  const navigate=useNavigate();
   return (
     <>
     
@@ -43,7 +47,7 @@ export default function BusinessDetails() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" size="small">schedule a meeting for a service</Button>     
+        <Button onClick={() => navigate('./UserFormDetails')}   variant="outlined" size="small">schedule a meeting for a service</Button>     
       </CardActions>
     </Card>
     </>
