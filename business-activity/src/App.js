@@ -6,17 +6,16 @@ import UserFormDetails from "./components/UserFormDetails";
 
 function App() {
   return (
-    <>
     <div className="App">
       <Router>
         <Routes>
           <Route path='/' element={<BusinessForUsers />} />
+          <Route path='' element={<BusinessForUsers />} />
           <Route path='/BusinessDetails' element={<BusinessDetails />} />
           <Route path='/UserFormDetails' element={<UserFormDetails/>}/>
         </Routes>
       </Router>     
     </div>
-   </>
   );
 }
 
