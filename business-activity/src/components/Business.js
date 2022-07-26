@@ -1,13 +1,9 @@
-import React from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import '../design/business.css'
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { BusinessCard } from './BusinessCard';
+
 
 export async function getBusiness() {
     // let businessList = [];
@@ -32,25 +28,25 @@ export async function getBusiness() {
     const temp = [
         {
             id: '000',
-            img: '../hahaha.png',
+            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora'
         },
         {
-            id: '000',
-            img: '../hahaha.png',
+            id: '111',
+            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora'
         },
         {
-            id: '000',
-            img: '../hahaha.png',
+            id: '222',
+            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora'
         },
         {
-            id: '000',
-            img: '../hahaha.png',
+            id: '333',
+            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora'
         },
@@ -58,11 +54,13 @@ export async function getBusiness() {
     return temp;
 }
 export default function BusinessForUsers() {
-    const [businessList, setBusinessList] = React.useState([]);
-    React.useEffect(() => {
+    const [businessList, setBusinessList] = useState();
+    useEffect(() => {
         async function anyNameFunction2() {
+            debugger;
             const tempList = await getBusiness();
             setBusinessList(tempList);
+            console.log(businessList)
         }
         anyNameFunction2();
     }, []);
@@ -72,43 +70,31 @@ export default function BusinessForUsers() {
         <div id='business-div'>
             <h3>business page</h3>
             {
-                businessList === [] ? <p>no business</p> : businessList.map((business) => {
-                    <>
-                        <Business business={business}/>
-                    </>
-                })
+                // businessList === undefined ? <p>no business</p> : businessList.map((business) => {
+
+
+                //     debugger;
+                //     <div>
+                //         <BusinessCard business={business} />
+                //     </div>
+
+
+                // })
+
+
+                    < Grid container spacing={{ xs: 2, md: 3, }}>
+                      { businessList === undefined ? <p>no business</p> : businessList.map((item) => (
+                      <Grid item xs={2} sm={3} md={3} key={item.CodeFlight}>
+                      <BusinessCard business={item} />
+                      </Grid>
+                       ))}
+                     </Grid>
+
+
+            
             }
-        </div>
+        </div >
     );
 }
 
 
-export function Business(props) {
-    const navigate = useNavigate();
-    return (
-        <>
-            <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    // image="../hahaha.png"
-                    image={props.business.img}
-                    alt="business logo"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {props.business.businessName}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        by {props.business.ownersName}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small"
-                    onClick={navigate('/BusinessDetails', { id: props.business.id })}
-                    >Details</Button>
-                </CardActions>
-            </Card>
-        </>
-    );
-}
