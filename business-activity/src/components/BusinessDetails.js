@@ -84,10 +84,10 @@ export default function BusinessDetails() {
   return (
     <>
 
-      <Card sx={{ maxWidth: 2000, alignItems: 'center', marginLeft: '4%', marginTop: 5 }}>
+      <Card sx={{ maxWidth: 2000, alignItems: 'center', marginTop: 2 }}>
         <CardMedia
           component="img"
-         
+         width="200"
           height="230"
           image={businessDetails.img}
           alt="ha ha ha"
@@ -112,19 +112,19 @@ export default function BusinessDetails() {
                     <Typography variant="h6" component="div">
                       name: {item.serviceName}
                     </Typography>
-                    <Typography variant="h10" component="div">
+                    <Typography variant="h6" component="div">
                       num of meetings: {item.numOfMeetings}
                     </Typography>
-                    <Typography variant="h10" component="div">
+                    <Typography variant="h6" component="div">
                       duration: {item.durationOfMeeting}
                     </Typography>
-                    <Typography variant="h10" component="div">
+                    <Typography variant="h6" component="div">
                       cost: {item.cost}
                     </Typography>
-                    <Typography variant="h10" component="div">
+                    <Typography variant="h6" component="div">
                       open: {item.openingHours}
                     </Typography>
-                    <Typography variant="h10" component="div">
+                    <Typography variant="h6" component="div">
                       address:  {item.address.street} {item.address.number} ,{item.address.city}
                     </Typography>
                     <Typography variant="body2">
@@ -134,9 +134,7 @@ export default function BusinessDetails() {
                     </Typography>
                     <Button onClick={() => navigate('/BusinessDetails/UserFormDetails')} variant="outlined" size="small">schedule </Button>
                   </CardContent>
-                  <CardActions>
-
-                  </CardActions>
+           
                 </Card>
 
 
@@ -145,7 +143,7 @@ export default function BusinessDetails() {
           </Grid>
 
         </CardContent>
-
+<div style={{marginRight:'left'}}></div>
       </Card>
     </>
   );
