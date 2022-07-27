@@ -1,12 +1,7 @@
-import * as React from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Grid from "@mui/material/Grid";
 import '../design/business.css'
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import { BusinessCard } from './BusinessCard';
 import Typography from '@mui/material/Typography';
 
 export async function getBusiness() {
@@ -30,123 +25,64 @@ export async function getBusiness() {
     // }
     // return businessList;
     const temp = [
-            {
-                id: '000',
-                img: '../hahaha.png',
-                businessName: 'happy-life',
-                ownersName: 'naama&Racheli&Ora'
-            },
-            {
-                id: '000',
-                img: '../hahaha.png',
-                businessName: 'happy-life',
-                ownersName: 'naama&Racheli&Ora'
-            },
-            {
-                id: '000',
-                img: '../hahaha.png',
-                businessName: 'happy-life',
-                ownersName: 'naama&Racheli&Ora'
-            },
-            {
-                id: '000',
-                img: '../hahaha.png',
-                businessName: 'happy-life',
-                ownersName: 'naama&Racheli&Ora'
-            },
-        ];
+        {
+            id: '000',
+            img: './image/Haha.jpg',
+            businessName: 'happy-life',
+            ownersName: 'naama&Racheli&Ora'
+        },
+        {
+            id: '111',
+            img: './image/Haha.jpg',
+            businessName: 'happy-life',
+            ownersName: 'naama&Racheli&Ora'
+        },
+        {
+            id: '222',
+            img: './image/Haha.jpg',
+            businessName: 'happy-life',
+            ownersName: 'naama&Racheli&Ora'
+        },
+        {
+            id: '333',
+            img: './image/Haha.jpg',
+            businessName: 'happy-life',
+            ownersName: 'naama&Racheli&Ora'
+        },
+    ];
     return temp;
 }
-export function Business(props) {
-    const navigate = useNavigate();
-    return (
-        <>
-            <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    // image="../hahaha.png"
-                    image={props.business.img}
-                    alt="business logo"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {props.business.businessName}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        by {props.business.ownersName}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small"
-                        onClick={navigate('/BusinessDetails', { id: props.business.id })}
-                    >Details</Button>
-                </CardActions>
-            </Card>
-        </>
-    );
-}
-
 export default function BusinessForUsers() {
-    // const businessList = [
-    //     {
-    //         id: '000',
-    //         img: '../hahaha.png',
-    //         businessName: 'happy-life',
-    //         ownersName: 'naama&Racheli&Ora'
-    //     },
-    //     {
-    //         id: '000',
-    //         img: '../hahaha.png',
-    //         businessName: 'happy-life',
-    //         ownersName: 'naama&Racheli&Ora'
-    //     },
-    //     {
-    //         id: '000',
-    //         img: '../hahaha.png',
-    //         businessName: 'happy-life',
-    //         ownersName: 'naama&Racheli&Ora'
-    //     },
-    //     {
-    //         id: '000',
-    //         img: '../hahaha.png',
-    //         businessName: 'happy-life',
-    //         ownersName: 'naama&Racheli&Ora'
-    //     },
-    // ];
-    const [businessList, setBusinessList] = React.useState([{
-                id: '000',
-                img: '../hahaha.png',
-                businessName: 'happy-life',
-                ownersName: 'naama&Racheli&Ora'
-            }]);
+    const [businessList, setBusinessList] = useState();
+    useEffect(() => {
+        async function anyNameFunction2() {
+            debugger;
+            const tempList = await getBusiness();
+            setBusinessList(tempList);
+            console.log(businessList)
+        }
+        anyNameFunction2();
+    }, []);
 
-    // React.useEffect(() => {
-    //     Axios.get('http://localhost:3001').then(res => {
-    //         setData(res)
-    //     })
-    // }, [])
-
-    React.useEffect(() => {
-        debugger
-    const tempList=
-     getBusiness().then(()=>{
-        debugger
-    setBusinessList(tempList);
-    }).catch(err => console.log(err))
-    });
-    debugger
     return (
-        <>
-            <h3>business page</h3>
-            <div id='business-div'>
-                {
-                    businessList?.length === 0 ? (<p>no business</p>) : (businessList.map((business) => {
-                        <Business business={business} />
-                    }))
-                }
-            </div>
-        </>
+
+        <div id='business-div'>
+
+
+            <Typography sx={{ textAlign: 'center', marginLeft: '40%' }} gutterBottom variant="h4" component="div">
+                business page
+            </Typography>
+            {
+                < Grid container spacing={{ xs: 2, md: 3, }}>
+                    {businessList === undefined ? <p>no business</p> : businessList.map((item) => (
+                        <Grid item xs={2} sm={3} md={3} key={item.CodeFlight}>
+                            <BusinessCard business={item} />
+                        </Grid>
+                    ))}
+                </Grid>
+            }
+        </div >
     );
 }
+
 
