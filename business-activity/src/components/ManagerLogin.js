@@ -60,8 +60,8 @@ export default function ManagerLogIn() {
                         value={managerEmail}
                         onChange={emailhandleChange}
                     />
-                <Button type="submit">logIn</Button>
                 </Box>
+                <Button type="submit">logIn</Button>
             </form>
         </>
     );
