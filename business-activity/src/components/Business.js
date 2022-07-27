@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Grid from "@mui/material/Grid";
-import '../design/business.css'
+import './business.css'
 import { BusinessCard } from './BusinessCard';
 import Typography from '@mui/material/Typography';
 
@@ -81,7 +81,7 @@ export default function BusinessForUsers() {
                     ))}
                 </Grid>
             }
-        </div >
+        </div>
     );
 }
 

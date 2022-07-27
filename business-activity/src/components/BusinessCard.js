@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
-import '../design/business.css'
+import './business.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -13,14 +13,16 @@ export function BusinessCard(props) {
     const navigate = useNavigate();
     return (
         <div>
-    
-            <Card sx={{ maxWidth: 345 }}>
+
+            <Card sx={{ maxWidth: 345 }} id='imgCard'>
                 <CardMedia
                     component="img"
                     height="230"
-                  //  image='./image/Haha.jpg'
-                   image={props.business.img}
-                    alt="business logo"
+                    //  image='./image/Haha.jpg'
+                    //    image={props.business.img}
+                    // image='https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+                image='https://www.animatedimages.org/data/media/1309/animated-laughing-image-0152.gif'
+                alt="business logo"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -32,7 +34,7 @@ export function BusinessCard(props) {
                 </CardContent>
                 <CardActions>
                     <Button size="small"
-                    onClick={() => navigate('/BusinessDetails', { state:{id: props.business.id} })} 
+                        onClick={() => navigate('/BusinessDetails', { state: { id: props.business.id } })}
                     >Details</Button>
                 </CardActions>
             </Card>
