@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 
-export default function componentName(props) {
+export default function Admin(props) {
   const location = useLocation();
   const form = location.state;
   let business;
