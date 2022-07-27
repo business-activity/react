@@ -31,6 +31,9 @@ export default function ManagerLogIn() {
             }
             navigate('/admin',{state:{managerId:id}});
         }
+        else{
+            alert("owner not found")
+        }
     }
     return (
         <>

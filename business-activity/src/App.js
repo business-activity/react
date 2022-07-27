@@ -5,9 +5,22 @@ import BusinessDetails from "./components/BusinessDetails";
 import UserFormDetails from "./components/UserFormDetails";
 import ManagerLogIn from "./components/ManagerLogin";
 import Admin from "./components/ManagerActive";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
+  
+let theme = createTheme();
+theme = createTheme(theme, {
+  palette: {
+    primary: {
+      main: "#edcf3f",
+      light: "#f7eec2",
+      dark: "#b5ac81",
+    },
+  },
+});
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Router>
         <Routes>
@@ -21,6 +34,7 @@ function App() {
         </Routes>
       </Router>     
     </div>
+    </ThemeProvider>
   );
 }
 
