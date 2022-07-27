@@ -33,7 +33,7 @@ export function BusinessCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small"
+                    <Button size="medium" id='detailsButton'
                         onClick={() => navigate('/BusinessDetails', { state: { id: props.business.id } })}
                     >Details</Button>
                 </CardActions>

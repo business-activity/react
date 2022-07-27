@@ -9,3 +9,13 @@
   height: 40%;
   justify-self: center;
 }
+#businessButton{
+  background-color: rgba(255, 255, 0, 0.638);
+  color: black;
+  margin: 2vh;
+  margin-bottom: 4vh;
+}
+#detailsButton{
+  color:rgb(208, 208, 26);
+  font-weight: 600;
+}

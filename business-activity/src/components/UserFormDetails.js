@@ -22,7 +22,7 @@ export default function UserFormDetails() {
 
    
       noValidate
-      autoComplete="off"
+      autoComplete="on"
     >
       <div>
       <TextField
