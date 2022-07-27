@@ -17,19 +17,22 @@ export default function ManagerLogIn() {
     const emailhandleChange = (event) => {
         setEmail(event.target.value);
     };
-    const verifyManager=()=>{
+    const verifyManager=async()=>{
+        debugger
         if((managerName==='Ora'||managerName==='Naama'||managerName==='Racheli')
         && managerEmail==="manager@gmail.com"){ 
             let id;
+            const ourId='2c4db4bf-9145-491f-8990-7c811fbcae61';
             try{
-                const ourId='2c4db4bf-9145-491f-8990-7c811fbcae61';
+                debugger
                 const res=axios.get(`https://meetings-test.herokuapp.com/user/${ourId}`)
-                .then(() =>{id=res.data.id})
+                .then(() =>{id=res.data.userId})
                 .catch((err)=>console.log(err))
             } catch(err){
                 console.log(err);
             }
-            navigate('/admin',{state:{managerId:id}});
+            debugger
+            navigate('/admin',{state:{managerId:ourId}});
         }
         else{
             alert("owner not found")
