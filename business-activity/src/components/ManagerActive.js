@@ -9,7 +9,8 @@ export default function Admin(props) {
   const form = location.state;
   let business;
   try {
-    const res = axios.get(`https://meetings-test.herokuapp.com/business/${form.id}`).then(() => {
+    debugger
+    const res = axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`).then(() => {
       business = res.data;
       debugger
     })

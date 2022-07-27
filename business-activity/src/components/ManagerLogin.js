@@ -21,15 +21,15 @@ export default function ManagerLogIn() {
         if((managerName==='Ora'||managerName==='Naama'||managerName==='Racheli')
         && managerEmail==="manager@gmail.com"){ 
             let id;
-            try{
-                const ourId='2c4db4bf-9145-491f-8990-7c811fbcae61';
-                const res=axios.get(`https://meetings-test.herokuapp.com/user/${ourId}`)
-                .then(() =>{id=res.data.id})
-                .catch((err)=>console.log(err))
-            } catch(err){
-                console.log(err);
-            }
-            navigate('/admin',{state:{managerId:id}});
+            const ourId='2c4db4bf-9145-491f-8990-7c811fbcae61';
+            // try{             
+            //     const res=axios.get(`https://meetings-test.herokuapp.com/user/${ourId}`)
+            //     .then(() =>{id=res.data.id})
+            //     .catch((err)=>console.log(err))
+            // } catch(err){
+            //     console.log(err);
+            // }
+            navigate('/admin',{state:{managerId:ourId}});
         }
         else{
             alert("owner not found")
