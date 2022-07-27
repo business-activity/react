@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import ManagerLogIn from './ManagerLogin';
+import axios from 'axios';
+
 
 const style = {
     position: 'absolute',
@@ -46,28 +48,24 @@ export async function getBusiness() {
     const temp = [
         {
             id: '000',
-            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora',
             img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '111',
-            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora',
             img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '222',
-            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora',
             img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '333',
-            img: './image/Haha.jpg',
             businessName: 'happy-life',
             ownersName: 'naama&Racheli&Ora',
             img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
