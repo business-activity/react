@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../design/business.css'
@@ -12,77 +12,51 @@ import Typography from '@mui/material/Typography';
 export async function getBusiness() {
     // let businessList = [];
     // try {
-    //     const res = await axios.get("https://meetings-test.herokuapp.com/business");
-    //     businessList = res.data.map((item) => {
-    //         let b = {
-    //             id: item.id,
-    //             img: item.img,
-    //             userid: item.userid,
-    //             ownersName: item.businessDetails.ownersName,
-    //             businessName: item.businessDetails.businessName,
-    //             services: item.businessDetails.services
-    //         }
-    //         return b;
+    //     const res = axios.get("https://meetings-test.herokuapp.com/business").then(() => {
+    //         businessList = res.data.map((item) => {
+    //             let b = {
+    //                 id: item.id,
+    //                 img: item.img,
+    //                 userid: item.userid,
+    //                 ownersName: item.businessDetails.ownersName,
+    //                 businessName: item.businessDetails.businessName,
+    //                 services: item.businessDetails.services
+    //             }
+    //             return b;
+    //         })
     //     })
     // } catch (err) {
     //     console.log(err);
     // }
     // return businessList;
-
     const temp = [
-        {
-            id: '000',
-            img: '../hahaha.png',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
-        },
-        {
-            id: '000',
-            img: '../hahaha.png',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
-        },
-        {
-            id: '000',
-            img: '../hahaha.png',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
-        },
-        {
-            id: '000',
-            img: '../hahaha.png',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
-        },
-    ];
+            {
+                id: '000',
+                img: '../hahaha.png',
+                businessName: 'happy-life',
+                ownersName: 'naama&Racheli&Ora'
+            },
+            {
+                id: '000',
+                img: '../hahaha.png',
+                businessName: 'happy-life',
+                ownersName: 'naama&Racheli&Ora'
+            },
+            {
+                id: '000',
+                img: '../hahaha.png',
+                businessName: 'happy-life',
+                ownersName: 'naama&Racheli&Ora'
+            },
+            {
+                id: '000',
+                img: '../hahaha.png',
+                businessName: 'happy-life',
+                ownersName: 'naama&Racheli&Ora'
+            },
+        ];
     return temp;
 }
-export default function BusinessForUsers() {
-    const [businessList, setBusinessList] = React.useState([]);
-    React.useEffect(() => {
-        async function anyNameFunction2() {
-            const tempList = await getBusiness();
-            setBusinessList(tempList);
-        }
-        anyNameFunction2();
-    }, []);
-
-    return (
-
-        <div id='business-div'>
-            <h3>business page</h3>
-            {
-                businessList === [] ? <p>no business</p> : businessList.map((business) => {
-                    <>
-                        <Business business={business}/>
-                    </>
-                })
-            }
-        </div>
-    );
-}
-
-
 export function Business(props) {
     const navigate = useNavigate();
     return (
@@ -105,10 +79,74 @@ export function Business(props) {
                 </CardContent>
                 <CardActions>
                     <Button size="small"
-                    onClick={navigate('/BusinessDetails', { id: props.business.id })}
+                        onClick={navigate('/BusinessDetails', { id: props.business.id })}
                     >Details</Button>
                 </CardActions>
             </Card>
         </>
     );
 }
+
+export default function BusinessForUsers() {
+    // const businessList = [
+    //     {
+    //         id: '000',
+    //         img: '../hahaha.png',
+    //         businessName: 'happy-life',
+    //         ownersName: 'naama&Racheli&Ora'
+    //     },
+    //     {
+    //         id: '000',
+    //         img: '../hahaha.png',
+    //         businessName: 'happy-life',
+    //         ownersName: 'naama&Racheli&Ora'
+    //     },
+    //     {
+    //         id: '000',
+    //         img: '../hahaha.png',
+    //         businessName: 'happy-life',
+    //         ownersName: 'naama&Racheli&Ora'
+    //     },
+    //     {
+    //         id: '000',
+    //         img: '../hahaha.png',
+    //         businessName: 'happy-life',
+    //         ownersName: 'naama&Racheli&Ora'
+    //     },
+    // ];
+    const [businessList, setBusinessList] = React.useState([{
+                id: '000',
+                img: '../hahaha.png',
+                businessName: 'happy-life',
+                ownersName: 'naama&Racheli&Ora'
+            }]);
+
+    // React.useEffect(() => {
+    //     Axios.get('http://localhost:3001').then(res => {
+    //         setData(res)
+    //     })
+    // }, [])
+
+    React.useEffect(() => {
+        debugger
+    const tempList=
+     getBusiness().then(()=>{
+        debugger
+    setBusinessList(tempList);
+    }).catch(err => console.log(err))
+    });
+    debugger
+    return (
+        <>
+            <h3>business page</h3>
+            <div id='business-div'>
+                {
+                    businessList?.length === 0 ? (<p>no business</p>) : (businessList.map((business) => {
+                        <Business business={business} />
+                    }))
+                }
+            </div>
+        </>
+    );
+}
+
