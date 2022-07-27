@@ -4,9 +4,11 @@ import axios from 'axios';
 
 export default function componentName(props) {
   try {
-    const ourId = '2c4db4bf-9145-491f-8990-7c811fbcae61';
-    const res = axios.get(`https://meetings-test.herokuapp.com/business/${props.id}`)
-      .then(() => { props.id = res.data.id })
+   // const userId = '2c4db4bf-9145-491f-8990-7c811fbcae61';
+    const res = axios.get(`https://meetings-test.herokuapp.com/business/${props.managerId}`)
+      .then(() => { 
+        console.log(res)
+       })
       .catch((err) => console.log(err))
   } catch (err) {
     console.log(err);
