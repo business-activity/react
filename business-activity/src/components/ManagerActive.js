@@ -9,8 +9,9 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Grid from "@mui/material/Grid";
 import CardContent from '@mui/material/CardContent';
+import { updateLocale } from 'moment';
 
-export default function Admin(props) {
+export default function Admin() {
   const location = useLocation();
   const form = location.state;
   const [business, setBusiness] = useState()
@@ -25,12 +26,26 @@ export default function Admin(props) {
   } catch (err) {
     console.log(err)
   }
+  const updateBusiness = () => {
 
+  }
+  const deleteBusiness=() =>{
+
+  }
   return (
 
     <>
       {business &&
-        <div>
+        <div
+          style={{
+            backgroundImage: `${business.img}`,
+            backgroundPosition: 'center',
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat',
+            // width: '100vw',
+            // height: '89vh',
+            // marginTop: "-2.9%"
+          }}>
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
@@ -44,17 +59,17 @@ export default function Admin(props) {
             <div>
 
               <TextField
-                sx={{marginLeft:'4%'}}
+                sx={{ marginLeft: '4%' }}
                 id="standard-textarea"
                 label='business name'
                 placeholder={business.businessName}
                 multiline
                 variant="standard"
               />
-            
-         
+
+
               <TextField
-                sx={{marginLeft:'4%'}}
+                sx={{ marginLeft: '4%' }}
                 id="standard-textarea"
                 label='owners name'
                 placeholder={business.ownersName}
@@ -62,23 +77,23 @@ export default function Admin(props) {
                 variant="standard"
               />
 
-           <br></br>
-           
-           <br></br>
+              <br></br>
+
+              <br></br>
               <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h5" component="div">
                 update your service
               </Typography>
               {business.services.map((item) => (
 
-           
-                  <div>
+
+                <div>
                   <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h7" component="div">
                     {item.serviceName}
                   </Typography>
-                
-               
+
+
                   <TextField
-                  sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='num of meeting'
                     placeholder={item.numOfMeetings}
@@ -86,7 +101,7 @@ export default function Admin(props) {
                     variant="standard"
                   />
                   <TextField
-                    sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='duration of meeting'
                     placeholder={item.durationOfMeeting}
@@ -94,7 +109,7 @@ export default function Admin(props) {
                     variant="standard"
                   />
                   <TextField
-                    sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='cost'
                     placeholder={item.cost}
@@ -102,7 +117,7 @@ export default function Admin(props) {
                     variant="standard"
                   />
                   <TextField
-                    sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='address-city'
                     placeholder={item.address.city}
@@ -110,7 +125,7 @@ export default function Admin(props) {
                     variant="standard"
                   />
                   <TextField
-                    sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='address-street'
                     placeholder={item.address.street}
@@ -118,9 +133,9 @@ export default function Admin(props) {
                     variant="standard"
                   />
                   <TextField
-                    sx={{marginLeft:'2%'}}
+                    sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
-                    label='item.address.number'
+                    label='address-number'
                     placeholder={item.address.number}
                     multiline
                     variant="standard"
@@ -131,17 +146,17 @@ export default function Admin(props) {
                     <br />
 
                   </Typography>
-                  </div>
-              
+                </div>
+
               ))}
 
               <br></br>
               <br></br>
-              <Button    variant="outlined" size="medium">
+              <Button onClick={updateBusiness()} variant="outlined" size="medium">
                 update your details
               </Button>
-        
-              <Button sx={{marginLeft:'4%', marginButton:'2%'}} variant="outlined" size="medium">
+
+              <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
                 delete your business
               </Button>
             </div>
