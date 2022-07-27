@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import '../design/business.css'
 import { BusinessCard } from './BusinessCard';
-
+import Typography from '@mui/material/Typography';
 
 export async function getBusiness() {
     // let businessList = [];
@@ -68,30 +67,19 @@ export default function BusinessForUsers() {
     return (
 
         <div id='business-div'>
-            <h3>business page</h3>
+
+         
+            <Typography sx={{textAlign:'center',marginLeft:'40%'}} gutterBottom variant="h4" component="div">
+            business page
+        </Typography>
             {
-                // businessList === undefined ? <p>no business</p> : businessList.map((business) => {
-
-
-                //     debugger;
-                //     <div>
-                //         <BusinessCard business={business} />
-                //     </div>
-
-
-                // })
-
-
-                    < Grid container spacing={{ xs: 2, md: 3, }}>
-                      { businessList === undefined ? <p>no business</p> : businessList.map((item) => (
-                      <Grid item xs={2} sm={3} md={3} key={item.CodeFlight}>
-                      <BusinessCard business={item} />
-                      </Grid>
-                       ))}
-                     </Grid>
-
-
-            
+                < Grid container spacing={{ xs: 2, md: 3, }}>
+                    {businessList === undefined ? <p>no business</p> : businessList.map((item) => (
+                        <Grid item xs={2} sm={3} md={3} key={item.CodeFlight}>
+                            <BusinessCard business={item} />
+                        </Grid>
+                    ))}
+                </Grid>
             }
         </div >
     );
