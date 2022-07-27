@@ -44,29 +44,27 @@ export default function Admin(props) {
             <div>
 
               <TextField
+                sx={{marginLeft:'4%'}}
                 id="standard-textarea"
                 label='business name'
                 placeholder={business.businessName}
                 multiline
                 variant="standard"
               />
-            </div>
-            <div>
-              <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h10" component="div">
-                your business name:
-              </Typography>
+            
+         
               <TextField
+                sx={{marginLeft:'4%'}}
                 id="standard-textarea"
                 label='owners name'
                 placeholder={business.ownersName}
                 multiline
                 variant="standard"
               />
-            </div>
-            <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h10" component="div">
-              your name:
-            </Typography>
-            <div>
+
+           <br></br>
+           
+           <br></br>
               <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h5" component="div">
                 update your service
               </Typography>
