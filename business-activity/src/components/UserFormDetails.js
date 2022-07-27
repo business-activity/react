@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function UserFormDetails() {
-
-
   return (
     <>
      <Typography sx={{textAlign:'center', marginTop:5}} gutterBottom variant="h4" component="div">

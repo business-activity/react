@@ -32,7 +32,8 @@ export function BusinessCard(props) {
                 </CardContent>
                 <CardActions>
                     <Button size="small"
-                    onClick={navigate('/BusinessDetails', { id: props.business.id })}
+                    onClick={() => navigate('/BusinessDetails', { id: props.business.id })} 
+                   // onClick={navigate('/BusinessDetails', { id: props.business.id })}
                     >Details</Button>
                 </CardActions>
             </Card>
