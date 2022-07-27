@@ -29,25 +29,29 @@ export async function getBusiness() {
             id: '000',
             img: './image/Haha.jpg',
             businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
+            ownersName: 'naama&Racheli&Ora',
+            img:'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '111',
             img: './image/Haha.jpg',
             businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
+            ownersName: 'naama&Racheli&Ora',
+            img:'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '222',
             img: './image/Haha.jpg',
             businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
+            ownersName: 'naama&Racheli&Ora',
+            img:'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
         {
             id: '333',
             img: './image/Haha.jpg',
             businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora'
+            ownersName: 'naama&Racheli&Ora',
+            img:'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
         },
     ];
     return temp;
