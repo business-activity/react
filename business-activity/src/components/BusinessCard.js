@@ -8,10 +8,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+
 export function BusinessCard(props) {
     debugger;
     const navigate = useNavigate();
     return (
+     
         <div>
 
             <Card sx={{ maxWidth: 345 }} id='imgCard'>
@@ -39,5 +41,6 @@ export function BusinessCard(props) {
                 </CardActions>
             </Card>
         </div>
+       
     );
 }
