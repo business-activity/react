@@ -7,8 +7,6 @@ import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Business } from '@mui/icons-material';
-
 
 // const businessDetails = {
 //   ownersName: "Naama&Racheli&Ora",
@@ -82,7 +80,7 @@ export default function BusinessDetails() {
         // .then((res) => {
         debugger
         setBusiness(res.data)
-          .then((console.log("inserted: " + res.data)));
+        console.log("inserted: " + res.data);
 
         // })
         // .catch((err) => {
@@ -156,7 +154,7 @@ export default function BusinessDetails() {
             {business?.ownersName}
           </Typography>
           <Grid container spacing={{ xs: 2, md: 3, }}>
-            {services.map((item) => (
+            {services===[]?<p>no services</p>:services.map((item) => (
               <Grid item xs={2} sm={3} md={3} key={item.name}>
                 <Card >
                   <CardContent>
