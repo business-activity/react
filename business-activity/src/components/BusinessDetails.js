@@ -70,7 +70,7 @@ import { Business } from '@mui/icons-material';
 export default function BusinessDetails() {
   debugger
   const [business, setBusiness] = React.useState();
-  const [services, setServices] = React.useState();
+  const [services, setServices] = React.useState([]);
   const location = useLocation();
   const form = location.state;
   React.useEffect(() => {
@@ -78,114 +78,118 @@ export default function BusinessDetails() {
       debugger;
       try {
         debugger
-        const res=await axios.get(`https://meetings-test.herokuapp.com/business?business_id=${form.id}`)
-          // .then((res) => {
-            debugger
-            setBusiness(res.data)
-            .then((console.log("inserted: "+res.data)));
-            
-          // })
-          // .catch((err) => {
-          //   debugger
-          //   console.log(err);
-          // })
+        const res = await axios.get(`https://meetings-test.herokuapp.com/business?business_id=${form.id}`)
+        // .then((res) => {
+        debugger
+        setBusiness(res.data)
+          .then((console.log("inserted: " + res.data)));
+
+        // })
+        // .catch((err) => {
+        //   debugger
+        //   console.log(err);
+        // })
       } catch (err) {
         console.log(err)
       }
     }
-    async function getServices(){
+
+    getBusiness();
+  }, []);
+  React.useEffect(() => {
+    async function getServices() {
       debugger;
       try {
         debugger
-        const res=await axios.get(`https://meetings-test.herokuapp.com/service?business_id=4eac7b0e-4464-4cd3-a909-92c26c3ca46e`)
-          // .then((res) => {
-            debugger
-              let tempList =await res.data.map((item) => {
-                let b = {
-                    name: item.serviceName,
-                    num: item.numOfMeetings,
-                    duration: item.durationOfMeeting,
-                    cost: item.cost,
-                    openingHours: item.OpeningHours,
-                    address:{
-                      number: item.address.number,
-                      street: item.address.street,
-                      city: item.address.city
-                    }
-                }
-                return b;
-            })
-            setServices(tempList) 
-            .then((console.log("inserted: "+res.data)));
-            
-          // })
-          // .catch((err) => {
-          //   debugger
-          //   console.log(err);
-          // })
+        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=4eac7b0e-4464-4cd3-a909-92c26c3ca46e`)
+        // .then((res) => {
+        debugger
+        let tempList = await res.data.map((item) => {
+          let b = {
+            name: item.serviceName,
+            num: item.numOfMeetings,
+            duration: item.durationOfMeeting,
+            cost: item.cost,
+            openingHours: item.OpeningHours,
+            address: {
+              number: item.address.number,
+              street: item.address.street,
+              city: item.address.city
+            }
+          }
+          return b;
+        })
+        setServices(tempList)
+          .then((console.log("inserted: " + res.data)));
+
+        // })
+        // .catch((err) => {
+        //   debugger
+        //   console.log(err);
+        // })
       } catch (err) {
         console.log(err)
       }
     }
-    getBusiness();
     getServices();
   }, []);
+
   const navigate = useNavigate();
   return (
     <>
       <p>DETAILS</p>
-        <Card sx={{ maxWidth: 2000, alignItems: 'center', marginTop: 2 }}>
-          <CardMedia
-            component="img"
-            width="200"
-            height="230"
-            image={business?.img}
-            alt="ha ha ha"
-          />
-          <CardContent>
-            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h3" component="div">
-              {/* {businessDetails.businessName} */}
-              {business?.businessName}
-            </Typography>
-            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
-              {/* {businessDetails.ownersName} */}
-              {business?.ownersName}
-            </Typography>
-            <Grid container spacing={{ xs: 2, md: 3, }}>
-              {services.map((item) => (
-                <Grid item xs={2} sm={3} md={3} key={item.name}>
-                  <Card >
-                    <CardContent>
-                      <Typography variant="h6" component="div">
-                        name: {item.name}
-                      </Typography>
-                      <Typography variant="h6" component="div">
-                        num of meetings: {item.num}
-                      </Typography>
-                      <Typography variant="h6" component="div">
-                        duration: {item.duration}
-                      </Typography>
-                      <Typography variant="h6" component="div">
-                        cost: {item.cost}
-                      </Typography>
-                      <Typography variant="h6" component="div">
-                        open: {item.openingHours}
-                      </Typography>
-                      <Typography variant="h6" component="div">
-                        address: {item.address.number} {item.address.street} ,{item.address.city}
-                      </Typography>
-                      <Typography variant="body2">
-                        <br />
-                      </Typography>
-                      <Button onClick={() => navigate('/BusinessDetails/UserFormDetails')} variant="outlined" size="small">schedule </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </CardContent>
-          <div style={{ marginRight: 'left' }}></div>
-        </Card>
-      </>
-      );
+      <Card sx={{ maxWidth: 2000, alignItems: 'center', marginTop: 2 }}>
+        <CardMedia
+          component="img"
+          width="200"
+          height="230"
+          image={business?.img}
+          alt="ha ha ha"
+        />
+        <CardContent>
+          <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h3" component="div">
+            {/* {businessDetails.businessName} */}
+            {business?.businessName}
+          </Typography>
+          <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
+            {/* {businessDetails.ownersName} */}
+            {business?.ownersName}
+          </Typography>
+          <Grid container spacing={{ xs: 2, md: 3, }}>
+            {services.map((item) => (
+              <Grid item xs={2} sm={3} md={3} key={item.name}>
+                <Card >
+                  <CardContent>
+                    <Typography variant="h6" component="div">
+                      name: {item.name}
+                    </Typography>
+                    <Typography variant="h6" component="div">
+                      num of meetings: {item.num}
+                    </Typography>
+                    <Typography variant="h6" component="div">
+                      duration: {item.duration}
+                    </Typography>
+                    <Typography variant="h6" component="div">
+                      cost: {item.cost}
+                    </Typography>
+                    <Typography variant="h6" component="div">
+                      open: {item.openingHours}
+                    </Typography>
+                    <Typography variant="h6" component="div">
+                      address: {item.address.number} {item.address.street} ,{item.address.city}
+                    </Typography>
+                    <Typography variant="body2">
+                      <br />
+                    </Typography>
+                    <Button onClick={() => navigate('/BusinessDetails/UserFormDetails')} variant="outlined" size="small">schedule </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </CardContent>
+        <div style={{ marginRight: 'left' }}></div>
+      </Card>
+    </>
+  );
 }

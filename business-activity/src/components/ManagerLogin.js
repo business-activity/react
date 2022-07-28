@@ -27,12 +27,8 @@ export default function ManagerLogIn() {
                 "password": managerPassword
             };
             const res = await axios.post(`https://meetings-test.herokuapp.com/user/signin`,user)
-                .catch((err) => {
-                    debugger;
-                    Alert(err + "in signin catch");
-                });
-            // .then((res) => {
-            if (res.data.userId) {
+            .then((res) => {
+            if (res.data?.userId) {
                 debugger
                 alert('SUCCEED');
                 let id = res.data.userId;
@@ -41,7 +37,10 @@ export default function ManagerLogIn() {
                 Alert("owner not found");
                 navigate('/admin', { state: { managerId: ourId } });
             }
-            // })
+            }).catch((err) => {
+                debugger;
+                Alert(err + "in signin catch");
+            });
         } catch (err) {
             debugger
             Alert(err);
