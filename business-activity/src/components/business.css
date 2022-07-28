@@ -1,0 +1,22 @@
+#business-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+#imgCard img{
+  width: 20vw;
+  height: 20vh;
+  margin-top: 3%;
+  margin-left: 10%;
+}
+#businessButton{
+  background-color: rgba(255, 255, 0, 0.638);
+  color: black;
+  margin: 2vh;
+  margin-bottom: 4vh;
+}
+#detailsButton{
+  color:rgb(208, 208, 26);
+  font-weight: 600;
+}
