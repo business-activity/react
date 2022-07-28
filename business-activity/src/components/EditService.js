@@ -39,12 +39,12 @@ export default function EditService() {
                             duration: res.data.durationOfMeeting,
                             cost: res.data.cost,
                             openingHours: res.data.OpeningHours,
-                            address: {
+                         
                                 number: res.data.address.number,
                                 street: res.data.address.street,
                                 city: res.data.address.city
 
-                            }
+                         
                         }
                         setServices(tempList);
                     })
@@ -133,30 +133,30 @@ export default function EditService() {
                         <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
                             city:
                         </Typography>
-                        {/* <TextField
+                        <TextField
                                 id="outlined-textarea"
-                                label={services.address.city}
-                                placeholder={services.address.city}
+                                label={services.city}
+                                placeholder={services.city}
                                 multiline
-                            /> */}
+                            />
                         <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
                             street:
                         </Typography>
-                        {/* <TextField
+                        <TextField
                                 id="outlined-textarea"
-                                label={services.address.street}
-                                placeholder={services.address.street}
+                                label={services.street}
+                                placeholder={services.street}
                                 multiline
-                            /> */}
+                            />
                         <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
                             number:
                         </Typography>
-                        {/* <TextField
+                        <TextField
                                 id="outlined-textarea"
-                                label={services.address.number}
-                                placeholder={services.address.number}
+                                label={services.number}
+                                placeholder={services.number}
                                 multiline
-                            /> */}
+                            />
 
 
 
