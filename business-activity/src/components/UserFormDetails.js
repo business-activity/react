@@ -34,14 +34,14 @@ export default function UserFormDetails() {
         />
         <TextField
           id="standard-textarea"
-          label="your last name"
-          placeholder="Placeholder"
+          label="last name"
+          placeholder="your last name"
           multiline
           variant="standard"
         />
         <TextField
           id="standard-textarea"
-          label="mail"
+          label="mail address"
           placeholder="your mail"
           multiline
           variant="standard"
@@ -73,7 +73,7 @@ export default function UserFormDetails() {
       <div>
       <TextField
           id="standard-textarea"
-          label="phone"
+          label="phone number"
           placeholder="your phone"
           multiline
           variant="standard"

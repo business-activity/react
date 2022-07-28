@@ -12,9 +12,9 @@ import CardContent from '@mui/material/CardContent';
 import { updateLocale } from 'moment';
 
 export default function Admin() {
+  const [business, setBusiness] = useState();
   const location = useLocation();
   const form = location.state;
-  const [business, setBusiness] = useState()
   try {
     debugger
     axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`).then((res) => {

@@ -25,64 +25,85 @@ const style = {
 
 
 
-export async function getBusiness() {
-    // let businessList = [];
-    // try {
-    //     const res = axios.get("https://meetings-test.herokuapp.com/business").then(() => {
-    //         businessList = res.data.map((item) => {
-    //             let b = {
-    //                 id: item.id,
-    //                 img: item.img,
-    //                 userid: item.userid,
-    //                 ownersName: item.businessDetails.ownersName,
-    //                 businessName: item.businessDetails.businessName,
-    //                 services: item.businessDetails.services
-    //             }
-    //             return b;
-    //         })
-    //     })
-    // } catch (err) {
-    //     console.log(err);
-    // }
-    // return businessList;
-    const temp = [
-        {
-            id: '000',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora',
-            img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-        },
-        {
-            id: '111',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora',
-            img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-        },
-        {
-            id: '222',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora',
-            img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-        },
-        {
-            id: '333',
-            businessName: 'happy-life',
-            ownersName: 'naama&Racheli&Ora',
-            img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-        },
-    ];
-    return temp;
-}
+// export async function getBusiness() {
+//     let businessList = [];
+//     try {
+//         const res = axios.get("https://meetings-test.herokuapp.com/business").then(() => {
+//             businessList = res.data.map((item) => {
+//                 let b = {
+//                     id: item.id,
+//                     img: item.img,
+//                     userid: item.userid,
+//                     ownersName: item.businessDetails.ownersName,
+//                     businessName: item.businessDetails.businessName,
+//                     services: item.businessDetails.services
+//                 }
+//                 return b;
+//             })
+//         })
+//     } catch (err) {
+//         console.log(err);
+//     }
+//     return businessList;
+//     // const temp = [
+//     //     {
+//     //         id: '000',
+//     //         businessName: 'happy-life',
+//     //         ownersName: 'naama&Racheli&Ora',
+//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+//     //     },
+//     //     {
+//     //         id: '111',
+//     //         businessName: 'happy-life',
+//     //         ownersName: 'naama&Racheli&Ora',
+//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+//     //     },
+//     //     {
+//     //         id: '222',
+//     //         businessName: 'happy-life',
+//     //         ownersName: 'naama&Racheli&Ora',
+//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+//     //     },
+//     //     {
+//     //         id: '333',
+//     //         businessName: 'happy-life',
+//     //         ownersName: 'naama&Racheli&Ora',
+//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+//     //     },
+//     // ];
+//     // return temp;
+// }
 export default function BusinessForUsers() {
+    debugger
     const [businessList, setBusinessList] = useState();
     useEffect(() => {
-        async function anyNameFunction2() {
+        async function getBusiness() {
             debugger;
-            const tempList = await getBusiness();
-            setBusinessList(tempList);
-            console.log(businessList)
+            try {
+                await axios.get("https://meetings-test.herokuapp.com/business")
+                .then((res) => {
+                    let tempList = res.data.map((item) => {
+                        let b = {
+                            id: item.id,
+                            img: item.img,
+                            userid: item.userId,
+                            ownersName: item.ownersName,
+                            businessName: item.businessName,
+                            services: item.services
+                        }
+                        return b;
+                    })
+                    setBusinessList(tempList);
+                })
+                .catch((err) => {
+                    debugger
+                    console.log(err);
+                  })
+            } catch (err) {
+                console.log(err);
+            }
         }
-        anyNameFunction2();
+        getBusiness();
     }, []);
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
@@ -104,7 +125,7 @@ export default function BusinessForUsers() {
                 aria-describedby="keep-mounted-modal-description"
             >
                 <Box sx={style}>
-                    <ManagerLogIn/>
+                    <ManagerLogIn />
                 </Box>
             </Modal>
             <div id='business-div'>
