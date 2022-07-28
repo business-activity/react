@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BusinessDetails from "./components/BusinessDetails";
 import UserFormDetails from "./components/UserFormDetails";
 import ManagerLogIn from "./components/ManagerLogin";
-import Admin from "./components/ManagerActive";
+import Admin from './components/ManagerActive'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
