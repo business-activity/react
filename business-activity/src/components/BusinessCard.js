@@ -20,7 +20,7 @@ export function BusinessCard(props) {
                 <CardMedia
                     component="img"
                     height="230"
-                    image={props.business.img|'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'}
+                    image={props.business.img||'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'}
                     // src={props.business.img}
                     // image='https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
                     // image='https://www.animatedimages.org/data/media/1309/animated-laughing-image-0152.gif'

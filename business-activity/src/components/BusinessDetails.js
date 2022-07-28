@@ -10,66 +10,67 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Business } from '@mui/icons-material';
 
 
-const businessDetails = {
-  ownersName: "Naama&Racheli&Ora",
-  businessName: "happy-life",
-  img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-}
-const services = [
-  {
-    serviceName: "Group laughter workshop",
-    numOfMeetings: 7,
-    durationOfMeeting: "45 miniutes",
-    cost: "200$",
-    openingHours: "10:00-20:00",
-    address: {
-      city: "Tiberias",
-      street: "rimon",
-      number: 5
-    }
-  },
-  {
-    serviceName: " laughter ",
-    numOfMeetings: 2,
-    durationOfMeeting: "45 miniutes",
-    cost: "40$",
-    openingHours: "10:00-20:00",
-    address: {
-      city: "Tiberias",
-      street: "rimon",
-      number: 5
-    }
-  },
-  {
-    serviceName: " laughter workshop",
-    numOfMeetings: 7,
-    durationOfMeeting: "45 miniutes",
-    cost: "200$",
-    openingHours: "10:00-20:00",
-    address: {
-      city: "Tel-Aviv",
-      street: "Arlozerov",
-      number: 2
-    }
-  },
-  {
-    serviceName: "Group laughter workshop",
-    numOfMeetings: 30,
-    durationOfMeeting: "20 miniutes",
-    cost: "400$",
-    openingHours: "10:00-20:00",
-    address: {
-      city: "Tiberias",
-      street: "rimon",
-      number: 5
-    }
-  }
-]
+// const businessDetails = {
+//   ownersName: "Naama&Racheli&Ora",
+//   businessName: "happy-life",
+//   img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
+// }
+// const services = [
+//   {
+//     serviceName: "Group laughter workshop",
+//     numOfMeetings: 7,
+//     durationOfMeeting: "45 miniutes",
+//     cost: "200$",
+//     openingHours: "10:00-20:00",
+//     address: {
+//       city: "Tiberias",
+//       street: "rimon",
+//       number: 5
+//     }
+//   },
+//   {
+//     serviceName: " laughter ",
+//     numOfMeetings: 2,
+//     durationOfMeeting: "45 miniutes",
+//     cost: "40$",
+//     openingHours: "10:00-20:00",
+//     address: {
+//       city: "Tiberias",
+//       street: "rimon",
+//       number: 5
+//     }
+//   },
+//   {
+//     serviceName: " laughter workshop",
+//     numOfMeetings: 7,
+//     durationOfMeeting: "45 miniutes",
+//     cost: "200$",
+//     openingHours: "10:00-20:00",
+//     address: {
+//       city: "Tel-Aviv",
+//       street: "Arlozerov",
+//       number: 2
+//     }
+//   },
+//   {
+//     serviceName: "Group laughter workshop",
+//     numOfMeetings: 30,
+//     durationOfMeeting: "20 miniutes",
+//     cost: "400$",
+//     openingHours: "10:00-20:00",
+//     address: {
+//       city: "Tiberias",
+//       street: "rimon",
+//       number: 5
+//     }
+//   }
+// ]
 
 
 export default function BusinessDetails() {
   debugger
   const [business, setBusiness] = React.useState();
+  const [services, setServices] = React.useState();
   const location = useLocation();
   const form = location.state;
   React.useEffect(() => {
@@ -92,7 +93,42 @@ export default function BusinessDetails() {
         console.log(err)
       }
     }
+    async function getServices(){
+      debugger;
+      try {
+        debugger
+        const res=await axios.get(`https://meetings-test.herokuapp.com/service?business_id=4eac7b0e-4464-4cd3-a909-92c26c3ca46e`)
+          // .then((res) => {
+            debugger
+              let tempList =await res.data.map((item) => {
+                let b = {
+                    name: item.serviceName,
+                    num: item.numOfMeetings,
+                    duration: item.durationOfMeeting,
+                    cost: item.cost,
+                    openingHours: item.OpeningHours,
+                    address:{
+                      number: item.address.number,
+                      street: item.address.street,
+                      city: item.address.city
+                    }
+                }
+                return b;
+            })
+            setServices(tempList) 
+            .then((console.log("inserted: "+res.data)));
+            
+          // })
+          // .catch((err) => {
+          //   debugger
+          //   console.log(err);
+          // })
+      } catch (err) {
+        console.log(err)
+      }
+    }
     getBusiness();
+    getServices();
   }, []);
   const navigate = useNavigate();
   return (
@@ -103,7 +139,7 @@ export default function BusinessDetails() {
             component="img"
             width="200"
             height="230"
-            image={JSON.stringify(business?.img)}
+            image={business?.img}
             alt="ha ha ha"
           />
           <CardContent>
@@ -116,18 +152,18 @@ export default function BusinessDetails() {
               {business?.ownersName}
             </Typography>
             <Grid container spacing={{ xs: 2, md: 3, }}>
-              {business?.services.map((item) => (
-                <Grid item xs={2} sm={3} md={3} key={item.serviceName}>
+              {services.map((item) => (
+                <Grid item xs={2} sm={3} md={3} key={item.name}>
                   <Card >
                     <CardContent>
                       <Typography variant="h6" component="div">
-                        name: {item.serviceName}
+                        name: {item.name}
                       </Typography>
                       <Typography variant="h6" component="div">
-                        num of meetings: {item.numOfMeetings}
+                        num of meetings: {item.num}
                       </Typography>
                       <Typography variant="h6" component="div">
-                        duration: {item.durationOfMeeting}
+                        duration: {item.duration}
                       </Typography>
                       <Typography variant="h6" component="div">
                         cost: {item.cost}
