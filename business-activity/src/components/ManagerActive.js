@@ -13,23 +13,65 @@ import { updateLocale } from 'moment';
 
 export default function Admin() {
   const [business, setBusiness] = useState();
+  const [businessId, setBusinessId] = useState();
+  const [services, setServices] = useState([]);
   const location = useLocation();
   const form = location.state;
-  try {
-    debugger
-    axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`).then((res) => {
-      debugger
-      setBusiness(res.data)
-      console.log(res.data)
-      debugger
-    })
-  } catch (err) {
-    console.log(err)
-  }
+  React.useEffect(() => {
+    async function getBusiness() {
+      debugger;
+      try {
+        debugger
+        const res = await axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`)
+          .then((res) => {
+            debugger
+            setBusiness(res.data)
+            setBusinessId(res.data.id)
+            console.log("inserted: " + res.data);
+          })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    getBusiness();
+  }, []);
+
+  React.useEffect(() => {
+    async function getServices() {
+      debugger;
+      try {
+        debugger
+        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${businessId}`)
+        // .then((res) => {
+        debugger
+        let tempList = await res.data.map((item) => {
+          let b = {
+            name: item.serviceName,
+            num: item.numOfMeetings,
+            duration: item.durationOfMeeting,
+            cost: item.cost,
+            openingHours: item.OpeningHours,
+            address: {
+              number: item.address.number,
+              street: item.address.street,
+              city: item.address.city
+            }
+          }
+          return b;
+        })
+        setServices(tempList);
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getServices();
+  }, []);
+
   const updateBusiness = () => {
 
   }
-  const deleteBusiness=() =>{
+  const deleteBusiness = () => {
 
   }
   return (
@@ -83,12 +125,13 @@ export default function Admin() {
               <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h5" component="div">
                 update your service
               </Typography>
-              {business.services.map((item) => (
+
+              {services.map((item) => (
 
 
-                <div>
+                <div key={item.name}>
                   <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h7" component="div">
-                    {item.serviceName}
+                    {item.name}
                   </Typography>
 
 
@@ -96,7 +139,7 @@ export default function Admin() {
                     sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='num of meeting'
-                    placeholder={item.numOfMeetings}
+                    placeholder={item.num}
                     multiline
                     variant="standard"
                   />
@@ -104,7 +147,7 @@ export default function Admin() {
                     sx={{ marginLeft: '2%' }}
                     id="standard-textarea"
                     label='duration of meeting'
-                    placeholder={item.durationOfMeeting}
+                    placeholder={item.duration}
                     multiline
                     variant="standard"
                   />

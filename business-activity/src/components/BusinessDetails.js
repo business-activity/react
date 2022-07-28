@@ -118,7 +118,7 @@ export default function BusinessDetails() {
           return b;
         })
         setServices(tempList)
-          .then((console.log("inserted: " + res.data)));
+          // .then((console.log("inserted: " + res.data)));
 
         // })
         // .catch((err) => {

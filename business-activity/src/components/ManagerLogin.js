@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Alert, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -26,25 +26,24 @@ export default function ManagerLogIn() {
             "password": managerPassword
         };
         const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
-        try {
-            debugger
-            axios.post(`https://meetings-test.herokuapp.com/user/signin`, user).then((res) => {
-                debugger
-                if (res.data.id) {
-                    debugger
-                    alert('SUCCEED');
-                    let userId = res.data.id;
-                    navigate('/admin', { state: { managerId: userId} });
-                } else {
-                    debugger
-                
+        // try {
+        //     debugger
+        //     axios.post(`https://meetings-test.herokuapp.com/user/signin`, user).then((res) => {
+        //         debugger
+        //         if (res.data.id) {
+        //             debugger
+        //             alert('SUCCEED');
+        //             let userId = res.data.id;
+        //             navigate('/admin', { state: { managerId: userId} });
+        //         } else {
+        //             debugger              
                     navigate('/admin', { state: { managerId: ourId } });
-                }
-            })
-        } catch (err){
-            debugger
-            Alert(err);
-        }
+        //         }
+        //     })
+        // } catch (err){
+        //     debugger
+        //     alert(err);
+        // }
     }
 
 
