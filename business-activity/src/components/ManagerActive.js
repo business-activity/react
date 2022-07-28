@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import TextField from '@mui/material/TextField';
-import Card from '@mui/material/Card';
-import Grid from "@mui/material/Grid";
-import CardContent from '@mui/material/CardContent';
-import { updateLocale } from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 export default function Admin() {
+  const navigate = useNavigate();
   const [business, setBusiness] = useState();
   const [businessId, setBusinessId] = useState();
   const [services, setServices] = useState([]);
   const location = useLocation();
   const form = location.state;
-  React.useEffect(() => {
+  useEffect(() => {
     async function getBusiness() {
       debugger;
       try {
@@ -37,7 +34,7 @@ export default function Admin() {
     getBusiness();
   }, []);
 
-  React.useEffect(() => {
+useEffect(() => {
     async function getServices() {
       debugger;
       try {
@@ -47,7 +44,8 @@ export default function Admin() {
         debugger
         let tempList = await res.data.map((item) => {
           let b = {
-            name: item.serviceName,
+            id: item.id,
+            name: item.name,
             num: item.numOfMeetings,
             duration: item.durationOfMeeting,
             cost: item.cost,
@@ -74,6 +72,11 @@ export default function Admin() {
   const deleteBusiness = () => {
 
   }
+  const navigatePageE = (id) => {
+    debugger
+    console.log(id)
+    navigate('/editServices', { state: { id: id } })
+  }
   return (
 
     <>
@@ -87,11 +90,12 @@ export default function Admin() {
             // width: '100vw',
             // height: '89vh',
             // marginTop: "-2.9%"
-          }}>
+          }}
+        >
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
-              update your business details
+              update your business {business.businessName}  details
             </Typography>
             <CardMedia
               component="img"
@@ -100,108 +104,32 @@ export default function Admin() {
             />
             <div>
 
-              <TextField
-                sx={{ marginLeft: '4%' }}
-                id="standard-textarea"
-                label='business name'
-                placeholder={business.businessName}
-                multiline
-                variant="standard"
-              />
+            
+              <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
 
-
-              <TextField
-                sx={{ marginLeft: '4%' }}
-                id="standard-textarea"
-                label='owners name'
-                placeholder={business.ownersName}
-                multiline
-                variant="standard"
-              />
-
-              <br></br>
-
-              <br></br>
-              <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h5" component="div">
-                update your service
+                Click on one of your service to update or delete it
               </Typography>
 
               {services.map((item) => (
 
 
-                <div key={item.name}>
-                  <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h7" component="div">
-                    {item.name}
-                  </Typography>
+                <div key={item.id}>
+               {item.id&&<Button key={item.id}  onClick={()=>{ navigatePageE(item.id)}} sx={{ marginBottom: "1%" }} variant="outlined">{item.name}</Button> } 
 
-
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='num of meeting'
-                    placeholder={item.num}
-                    multiline
-                    variant="standard"
-                  />
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='duration of meeting'
-                    placeholder={item.duration}
-                    multiline
-                    variant="standard"
-                  />
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='cost'
-                    placeholder={item.cost}
-                    multiline
-                    variant="standard"
-                  />
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='address-city'
-                    placeholder={item.address.city}
-                    multiline
-                    variant="standard"
-                  />
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='address-street'
-                    placeholder={item.address.street}
-                    multiline
-                    variant="standard"
-                  />
-                  <TextField
-                    sx={{ marginLeft: '2%' }}
-                    id="standard-textarea"
-                    label='address-number'
-                    placeholder={item.address.number}
-                    multiline
-                    variant="standard"
-                  />
-
-                  <Typography variant="body2">
-
-                    <br />
-
-                  </Typography>
                 </div>
 
               ))}
 
               <br></br>
               <br></br>
-              <Button onClick={updateBusiness()} variant="outlined" size="medium">
-                update your details
+
+              {<Button onClick={updateBusiness()} variant="contained" size="medium">
+                add service to {business.businessName}
               </Button>
 
-              <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
+             /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
                 delete your business
-              </Button>
+              </Button> */}
             </div>
 
 
