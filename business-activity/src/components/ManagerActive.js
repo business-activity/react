@@ -14,7 +14,7 @@ import { updateLocale } from 'moment';
 export default function Admin() {
   const [business, setBusiness] = useState();
   const [businessId, setBusinessId] = useState();
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState();
   const location = useLocation();
   const form = location.state;
   React.useEffect(() => {
@@ -66,7 +66,7 @@ export default function Admin() {
       }
     }
     getServices();
-  }, []);
+  });
 
   const updateBusiness = () => {
 
@@ -82,12 +82,13 @@ export default function Admin() {
           style={{
             backgroundImage: `${business.img}`,
             backgroundPosition: 'center',
-            // backgroundSize: 'cover',
-            // backgroundRepeat: 'no-repeat',
-            // width: '100vw',
-            // height: '89vh',
-            // marginTop: "-2.9%"
-          }}>
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100vw',
+            height: '89vh',
+            marginTop: "-2.9%"
+          }}
+          >
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
