@@ -30,7 +30,7 @@ theme = createTheme(theme, {
           <Route path='/UserFormDetails' element={<UserFormDetails/>}/>
           <Route path='/BusinessDetails/UserFormDetails' element={<UserFormDetails/>}/>
           <Route path='/managerlogIn' element={<ManagerLogIn/>}/>
-          <Route path='/admin' element={<Admin/>}/>
+          <Route path='/managerlogIn/admin' element={<Admin/>}/>
         </Routes>
       </Router>     
     </div>
