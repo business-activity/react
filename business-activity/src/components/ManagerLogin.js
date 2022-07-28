@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,40 +10,50 @@ import axios from 'axios';
 export default function ManagerLogIn() {
     const navigate = useNavigate();
     const [managerName, setName] = React.useState();
-    const [managerEmail, setEmail] = React.useState();
+    const [managerPassword, setPassword] = React.useState();
     const namehandleChange = (event) => {
         setName(event.target.value);
     };
-    const emailhandleChange = (event) => {
-        setEmail(event.target.value);
+    const passwordhandleChange = (event) => {
+        setPassword(event.target.value);
     };
-    const verifyManager=async()=>{
+    const verifyManager = async () => {
         debugger
-        if((managerName==='Ora'||managerName==='Naama'||managerName==='Racheli')
-        && managerEmail==="manager@gmail.com"){ 
-            let id;
-            const ourId='2c4db4bf-9145-491f-8990-7c811fbcae61';
-            try{
-                debugger
-                const res=axios.get(`https://meetings-test.herokuapp.com/user/${ourId}`)
-                .then(() =>{id=res.data.userId})
-                .catch((err)=>console.log(err))
-            } catch(err){
-                console.log(err);
-            }
+        const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
+        try {
             debugger
-            navigate('/admin',{state:{managerId:ourId}});
+            const user={
+                "username": managerName,
+                "password": managerPassword
+            };
+            const res = await axios.post(`https://meetings-test.herokuapp.com/user/signin`,user)
+                .catch((err) => {
+                    debugger;
+                    Alert(err + "in signin catch");
+                });
+            // .then((res) => {
+            if (res.data.userId) {
+                debugger
+                alert('SUCCEED');
+                let id = res.data.userId;
+                navigate('/admin', { state: { managerId: id } });
+            } else {
+                Alert("owner not found");
+                navigate('/admin', { state: { managerId: ourId } });
+            }
+            // })
+        } catch (err) {
+            debugger
+            Alert(err);
         }
-        else{
-            alert("owner not found")
-        }
+        debugger
     }
     return (
         <>
             <form onSubmit={verifyManager}>
                 <Box
                     component="form"
-                    
+
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
                         textAlign: 'center',
@@ -57,14 +67,16 @@ export default function ManagerLogIn() {
                     <TextField
                         id="outlined-name"
                         label="Name"
+                        placeholder='yout name'
                         value={managerName}
                         onChange={namehandleChange}
                     />
                     <TextField
                         id="outlined-uncontrolled"
-                        label="email address"
-                        value={managerEmail}
-                        onChange={emailhandleChange}
+                        label="password"
+                        placeholder='your password'
+                        value={managerPassword}
+                        onChange={passwordhandleChange}
                     />
                 </Box>
                 <Button type="submit">logIn</Button>
