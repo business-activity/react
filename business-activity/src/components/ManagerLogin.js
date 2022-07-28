@@ -34,11 +34,11 @@ export default function ManagerLogIn() {
                     debugger
                     alert('SUCCEED');
                     let userId = res.data.id;
-                    navigate('/managerlogIn/admin', { state: { managerId: userId} });
+                    navigate('/admin', { state: { managerId: userId} });
                 } else {
                     debugger
                 
-                    navigate('/managerlogIn/admin', { state: { managerId: ourId } });
+                    navigate('/admin', { state: { managerId: ourId } });
                 }
             })
         } catch (err){

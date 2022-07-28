@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BusinessDetails from "./components/BusinessDetails";
 import UserFormDetails from "./components/UserFormDetails";
 import ManagerLogIn from "./components/ManagerLogin";
-import Admin from "./components/ManagerActive";
+import Admin from './components/ManagerActive'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
@@ -30,7 +30,8 @@ theme = createTheme(theme, {
           <Route path='/UserFormDetails' element={<UserFormDetails/>}/>
           <Route path='/BusinessDetails/UserFormDetails' element={<UserFormDetails/>}/>
           <Route path='/managerlogIn' element={<ManagerLogIn/>}/>
-          <Route path='/managerlogIn/admin' element={<Admin/>}/>
+          <Route path='/admin' element={<Admin/>}/>
+       
         </Routes>
       </Router>     
     </div>
