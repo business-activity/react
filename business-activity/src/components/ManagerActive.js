@@ -11,7 +11,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const [business, setBusiness] = useState();
   const [businessId, setBusinessId] = useState();
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState();
   const location = useLocation();
   const form = location.state;
   useEffect(() => {
@@ -64,7 +64,7 @@ useEffect(() => {
       }
     }
     getServices();
-  }, []);
+  });
 
   const updateBusiness = () => {
 
@@ -85,13 +85,13 @@ useEffect(() => {
           style={{
             backgroundImage: `${business.img}`,
             backgroundPosition: 'center',
-            // backgroundSize: 'cover',
-            // backgroundRepeat: 'no-repeat',
-            // width: '100vw',
-            // height: '89vh',
-            // marginTop: "-2.9%"
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100vw',
+            height: '89vh',
+            marginTop: "-2.9%"
           }}
-        >
+          >
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
