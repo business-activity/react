@@ -63,12 +63,12 @@ export default function EditService() {
 
     return (
         <>
-       
+
             {services &&
                 <Card sx={{ minWidth: 275, textAlign: 'center', marginTop: '5%' }}>
-                      <Typography sx={{ textAlign: 'center',color:'#edcf3f' }} gutterBottom variant="h4" component="div">
-                               edit your service
-                            </Typography>
+                    <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
+                        edit your service
+                    </Typography>
                     <CardContent>
                         <div>
                             <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
@@ -83,8 +83,8 @@ export default function EditService() {
                         </div>
 
                         <div>
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
-                               number of meeting:
+                            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
+                                number of meeting:
                             </Typography>
                             <TextField
                                 id="outlined-textarea"
@@ -94,7 +94,7 @@ export default function EditService() {
                             />
                         </div>
                         <div>
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
+                            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
                                 duration of meeting
                             </Typography>
                             <TextField
@@ -105,8 +105,8 @@ export default function EditService() {
                             />
                         </div>
                         <div>
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
-                        open in Hours:
+                            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
+                                open in Hours:
                             </Typography>
                             <TextField
                                 id="outlined-textarea"
@@ -116,8 +116,8 @@ export default function EditService() {
                             />
                         </div>
                         <div>
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
-                        cost:
+                            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h7" component="div">
+                                cost:
                             </Typography>
                             <TextField
                                 id="outlined-textarea"
@@ -126,45 +126,45 @@ export default function EditService() {
                                 multiline
                             />
                         </div>
-                      
+
                         <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                        address:
-                            </Typography>
-                            <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                        city:
-                            </Typography>
-                            <TextField
+                            address:
+                        </Typography>
+                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
+                            city:
+                        </Typography>
+                        {/* <TextField
                                 id="outlined-textarea"
                                 label={services.address.city}
                                 placeholder={services.address.city}
                                 multiline
-                            />
-                               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                        street:
-                            </Typography>
-                            <TextField
+                            /> */}
+                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
+                            street:
+                        </Typography>
+                        {/* <TextField
                                 id="outlined-textarea"
                                 label={services.address.street}
                                 placeholder={services.address.street}
                                 multiline
-                            />
-                                     <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                        number:
-                            </Typography>
-                            <TextField
+                            /> */}
+                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
+                            number:
+                        </Typography>
+                        {/* <TextField
                                 id="outlined-textarea"
                                 label={services.address.number}
                                 placeholder={services.address.number}
                                 multiline
-                            />
-                            
-                   
+                            /> */}
+
+
 
                     </CardContent>
-                    {/* <CardActions>
-                    <Button variant="contained">update your details</Button>
-                    <Button variant="contained">delete your services</Button>
-                    </CardActions> */}
+                   
+                    <Button sx={{margin:'2%'}} variant="contained">update your details</Button>
+                    <Button sx={{margin:'2%'}}  variant="contained">delete your services</Button>
+                   
                 </Card>}
         </>
     );
