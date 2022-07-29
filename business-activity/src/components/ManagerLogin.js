@@ -21,37 +21,37 @@ export default function ManagerLogIn() {
 
     
     const verifyManager = async () => {
-        debugger
-        const user = {
-            "username": managerName,
-            "password": managerPassword
-        };
-        // const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
-        // setId(ourId);
+    //     debugger
+    //     const user = {
+    //         "username": managerName,
+    //         "password": managerPassword
+    //     };
+         const ourId = '806cab39-1b14-4d31-9a89-0a459a46bba9';
+    //     // setId(ourId);
         
-        debugger
-        try {
-            axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
-                .then((res) => {
-                    debugger
-                    const userId = res.data.id;
-                    if (userId) {
-                        debugger
-                        setManagerId(userId);
-                    }
-                    debugger
-                })
-                .catch((err) => { console.error(err); })
-        }
-        catch (err) {
-            debugger
-            alert(err);
-        }
-        finally{
-            if(managerId){
-                navigate('/admin', { state: { managerId: managerId } }, { replace: true });
-            }
-        }
+    //     debugger
+    //     try {
+    //         axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
+    //             .then((res) => {
+    //                 debugger
+    //                 const userId = res.data.id;
+    //                 if (userId) {
+    //                     debugger
+    //                     setManagerId(userId);
+    //                 }
+    //                 debugger
+    //             })
+    //             .catch((err) => { console.error(err); })
+    //     }
+    //     catch (err) {
+    //         debugger
+    //         alert(err);
+    //     }
+    //     finally{
+    //         if(managerId){
+                navigate('/admin', { state: { managerId:ourId } }, { replace: true });
+    //         }
+    //     }
         
     }
     // React.useEffect(() => {

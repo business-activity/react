@@ -46,7 +46,7 @@ export default function EditService() {
             debugger
             debugger;
             try {
-                await axios.get(`https://meetings-test.herokuapp.com/service/${form.id}`)
+                await axios.get(`https://meetings-test.herokuapp.com/service/${form.managerId}`)
                     .then((res) => {
                         debugger;
                         console.log(res.data)
