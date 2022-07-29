@@ -69,9 +69,7 @@ export default function Admin() {
   const updateBusiness = () => {
 
   }
-  const deleteBusiness = () => {
 
-  }
   const navigatePageE = (id) => {
     debugger
     console.log(id)
@@ -103,40 +101,25 @@ export default function Admin() {
             // alt="your business image"
             />
             <div>
-
-
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
-
                 Click on one of your service to update or delete it
               </Typography>
-
-              {services.map((item) => (
-
-
+              {services?.map((item) => (
                 <div key={item.id}>
                   {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%" }} variant="outlined">{item.name}</Button>}
-
                 </div>
-
               ))}
-
               <br></br>
               <br></br>
-
-              {<Button onClick={updateBusiness()} variant="contained" size="medium">
+              {<Button onClick={()=>navigate('/addService',{state:{businessId:businessId}})} variant="contained" size="medium">
                 add service to {business.businessName}
               </Button>
-
              /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
                 delete your business
               </Button> */}
             </div>
-
-
           </Box>
         </div>
-
-
       }
     </>
   );

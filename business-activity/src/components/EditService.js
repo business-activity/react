@@ -27,7 +27,7 @@ export default function EditService() {
     //         await axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
     //             .then((res) => {
     //                 console.log(res)
-    //                 alert("your Services deleted!!!")
+    //                 alert("your Service deleted!!!")
                   
     //             })
     //             .catch((err) => {
