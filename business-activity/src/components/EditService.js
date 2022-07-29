@@ -50,8 +50,8 @@ export default function EditService() {
     const updateServices = async () => {
 
 
-
-        const data = {
+debugger
+        const dataInput = {
 
           
             "numOfMeetings": inputNum.current?.value,
@@ -65,7 +65,7 @@ export default function EditService() {
 
             }
         }
-        console.log(data);
+        console.log(dataInput);
 
 
 
@@ -73,33 +73,25 @@ export default function EditService() {
 
 
 
-        //  debugger
-        // try {
-        //     debugger
-        //     await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{"service":{
-        //         "numOfMeetings": 4,
-        //         "durationOfMeeting": "1 hour",
-        //         "cost": "200$",
-        //         "OpeningHours": "10:00-21:30",
-        //         "address": {
-        //             "city": "bnei-brak",
-        //             "street": "pardo",
-        //             "number": 2
-        //         }
-        //     }
-        // }}`)
-        //         .then((res) => {
+         debugger
+        try {
+            debugger
+            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{"service":{
+                dataInput
+            }
+        }}`)
+                .then((res) => {
 
-        //             console.log(res.data)
+                    console.log(res.data)
 
-        //         })
-        //         .catch((err) => {
-        //             debugger
-        //             console.log(err);
-        //         })
-        // } catch (err) {
-        //     console.log(err);
-        // }
+                })
+                .catch((err) => {
+                    debugger
+                    console.log(err);
+                })
+        } catch (err) {
+            console.log(err);
+        }
     }
     useEffect(() => {
         async function getService() {
