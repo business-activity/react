@@ -36,7 +36,7 @@ export default function ManagerLogIn() {
     //         "password": managerPassword
     //     };
          const ourId = '806cab39-1b14-4d31-9a89-0a459a46bba9';
-    //     // setId(ourId);
+            setManagerId(ourId);
         
     //     debugger
     //     try {
@@ -58,7 +58,7 @@ export default function ManagerLogIn() {
     //     }
     //     finally{
     //         if(managerId){
-                navigate('/admin', { state: { managerId:ourId } }, { replace: true });
+                // navigate('/admin', { state: { managerId:ourId } }, { replace: true });
     //         }
     //     }
         
