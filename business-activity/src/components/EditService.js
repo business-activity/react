@@ -46,12 +46,12 @@ export default function EditService() {
             debugger
             debugger;
             try {
-                await axios.get(`https://meetings-test.herokuapp.com/service/${form.managerId}`)
+                await axios.get(`https://meetings-test.herokuapp.com/service/${form.id}`)
                     .then((res) => {
                         debugger;
                         console.log(res.data)
                         let tempList = {
-
+                         
                             id: res.data.id,
                             name: res.data.name,
                             num: res.data.numOfMeetings,
@@ -59,7 +59,7 @@ export default function EditService() {
                             cost: res.data.cost,
                             openingHours: res.data.OpeningHours,
 
-                            number: res.data.address.number,
+                            numberM: res.data.address.number,
                             street: res.data.address.street,
                             city: res.data.address.city
 
@@ -169,8 +169,8 @@ export default function EditService() {
                         <TextField
                             sx={{ margin: '1%' }}
                             id="outlined-textarea"
-                            label={services.number}
-                            placeholder={services.number}
+                            label={services.numberM}
+                            placeholder={services.numberM}
                             multiline
                         />
 
