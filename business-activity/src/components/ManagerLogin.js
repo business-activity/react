@@ -8,18 +8,27 @@ import axios from 'axios';
 
 
 export default function ManagerLogIn() {
+    debugger
     const navigate = useNavigate();
     const [managerName, setName] = React.useState();
     const [managerPassword, setPassword] = React.useState();
     const [managerId, setManagerId] = React.useState();
+
     const namehandleChange = (event) => {
         setName(event.target.value);
     };
     const passwordhandleChange = (event) => {
         setPassword(event.target.value);
     };
+    const navigateAdmin = () => {
+        debugger
+        if(managerId){
+            debugger
+            navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+        }
+    };
 
-    
+    navigateAdmin();
     const verifyManager = async () => {
     //     debugger
     //     const user = {
