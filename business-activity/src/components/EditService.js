@@ -48,12 +48,8 @@ export default function EditService() {
         //     }
     }
     const updateServices = async () => {
-
-
-debugger
+        debugger
         const dataInput = {
-
-          
             "numOfMeetings": inputNum.current?.value,
             "durationOfMeeting": inputDuration.current?.value,
             "cost": inputCost.current?.value,
@@ -62,28 +58,15 @@ debugger
                 "city": inputCity.current?.value,
                 "street": inputStreet.current?.value,
                 "number": inputNumber.current?.value,
-
             }
         }
         console.log(dataInput);
-
-
-
-
-
-
-
-         debugger
+        debugger
         try {
             debugger
-            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{"service":{
-                dataInput
-            }
-        }}`)
+            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`, dataInput)
                 .then((res) => {
-
                     console.log(res.data)
-
                 })
                 .catch((err) => {
                     debugger
@@ -110,12 +93,9 @@ debugger
                             duration: res.data.durationOfMeeting,
                             cost: res.data.cost,
                             openingHours: res.data.OpeningHours,
-
                             numberM: res.data.address.number,
                             street: res.data.address.street,
                             city: res.data.address.city
-
-
                         }
                         setServices(tempList);
                     })
@@ -129,9 +109,6 @@ debugger
         }
         getService();
     }, []);
-
-
-
     return (
         <>
 

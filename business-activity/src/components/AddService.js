@@ -69,7 +69,7 @@ export default function AddService() {
                         placeholder="new service name"
                         multiline
                         variant="standard"
-                        ref={name_inputRef}
+                        inputRef={name_inputRef}
                     />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export default function AddService() {
                         label="num of meetings"
                         placeholder="num of meetings"
                         multiline
-                        ref={numMeetings_inputRef}
+                        inputRef={numMeetings_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -88,7 +88,7 @@ export default function AddService() {
                         label="duration Of Meeting"
                         placeholder="duration Of Meeting"
                         multiline
-                        ref={durationMeeting_inputRef}
+                        inputRef={durationMeeting_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -98,7 +98,7 @@ export default function AddService() {
                         label="cost"
                         placeholder="cost"
                         multiline
-                        ref={cost_inputRef}
+                        inputRef={cost_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -108,7 +108,7 @@ export default function AddService() {
                         label="Opening Hours"
                         placeholder="Opening Hours"
                         multiline
-                        ref={openingHours_inputRef}
+                        inputRef={openingHours_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -118,7 +118,7 @@ export default function AddService() {
                         label="address-building"
                         placeholder="building-number"
                         multiline
-                        ref={building_inputRef}
+                        inputRef={building_inputRef}
                         variant="standard"
                     />
                     <TextField
@@ -126,7 +126,7 @@ export default function AddService() {
                         label="address-street"
                         placeholder="street"
                         multiline
-                        ref={street_inputRef}
+                        inputRef={street_inputRef}
                         variant="standard"
                     />
                     <TextField
@@ -134,7 +134,7 @@ export default function AddService() {
                         label="address-city"
                         placeholder="city"
                         multiline
-                        ref={city_inputRef}
+                        inputRef={city_inputRef}
                         variant="standard"
                     />
                 </div>
