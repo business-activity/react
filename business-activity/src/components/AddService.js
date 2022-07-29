@@ -4,14 +4,51 @@ import TextField from '@mui/material/TextField';
 import { useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import axios from 'axios';
+import { useRef } from 'react';
 
 export default function AddService() {
     const location = useLocation();
     const businessId = location.state.businessId;
     const businessName = location.state.businessName;
-const postService=()=>{
-
-}
+    const name_inputRef = useRef();
+    const durationMeeting_inputRef = useRef();
+    const numMeetings_inputRef = useRef();
+    const cost_inputRef = useRef();
+    const openingHours_inputRef = useRef();
+    const building_inputRef = useRef();
+    const street_inputRef = useRef();
+    const city_inputRef = useRef();
+    const postService = async () => {
+        debugger
+        const newService = {
+            "business_id": businessId,
+            "name": name_inputRef.current.value,
+            "service": {
+                "name": name_inputRef.current.value,
+                "numOfMeetings": numMeetings_inputRef.current?.value,
+                "durationOfMeeting": durationMeeting_inputRef.current?.value,
+                "cost": cost_inputRef.current?.value,
+                "OpeningHours": openingHours_inputRef.current?.value,
+                "address": {
+                    "building": building_inputRef.current?.value,
+                    "street": street_inputRef.current?.value,
+                    "city": city_inputRef.current?.value
+                }
+            }
+        };
+        debugger
+        const res = await axios.post("https://meetings-test.herokuapp.com/service", newService)
+            .then((response) => {
+                debugger
+                alert(response);
+            })
+            .catch((error) => {
+                debugger
+                alert(error);
+            });
+        alert(res.data);
+    }
     return (
         <>
             <Box
@@ -20,10 +57,7 @@ const postService=()=>{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
                     textAlign: 'center',
                     marginTop: 5,
-
                 }}
-
-
                 noValidate
                 autoComplete="on"
             >
@@ -35,6 +69,7 @@ const postService=()=>{
                         placeholder="new service name"
                         multiline
                         variant="standard"
+                        ref={name_inputRef}
                     />
                 </div>
                 <div>
@@ -43,24 +78,27 @@ const postService=()=>{
                         label="num of meetings"
                         placeholder="num of meetings"
                         multiline
+                        ref={numMeetings_inputRef}
                         variant="standard"
                     />
-                    </div>
-                    <div>
+                </div>
+                <div>
                     <TextField
                         id="standard-textarea"
                         label="duration Of Meeting"
                         placeholder="duration Of Meeting"
                         multiline
+                        ref={durationMeeting_inputRef}
                         variant="standard"
                     />
-                    </div>
-                    <div>
+                </div>
+                <div>
                     <TextField
                         id="standard-textarea"
                         label="cost"
                         placeholder="cost"
                         multiline
+                        ref={cost_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -70,6 +108,7 @@ const postService=()=>{
                         label="Opening Hours"
                         placeholder="Opening Hours"
                         multiline
+                        ref={openingHours_inputRef}
                         variant="standard"
                     />
                 </div>
@@ -79,6 +118,7 @@ const postService=()=>{
                         label="address-building"
                         placeholder="building-number"
                         multiline
+                        ref={building_inputRef}
                         variant="standard"
                     />
                     <TextField
@@ -86,6 +126,7 @@ const postService=()=>{
                         label="address-street"
                         placeholder="street"
                         multiline
+                        ref={street_inputRef}
                         variant="standard"
                     />
                     <TextField
@@ -93,6 +134,7 @@ const postService=()=>{
                         label="address-city"
                         placeholder="city"
                         multiline
+                        ref={city_inputRef}
                         variant="standard"
                     />
                 </div>
