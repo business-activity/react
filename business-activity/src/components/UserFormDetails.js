@@ -1,11 +1,18 @@
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useLocation } from 'react-router-dom';
 
 export default function UserFormDetails() {
+ 
+  const location= useLocation();
+  const service=location.state.service;
+  const handleRegister=()=>{
+    
+  }
+
   return (
     <>
      <Typography sx={{textAlign:'center', marginTop:5}} gutterBottom variant="h4" component="div">
@@ -78,10 +85,10 @@ export default function UserFormDetails() {
           multiline
           variant="standard"
         />
-     
+     <p>*payment in first meeting</p>
       </div>
     </Box>
-    <Button sx={{textAlign:'center',alignItems:'center',marginLeft:'44%',marginTop:5}} variant="outlined" size="small">send your details</Button>     
+    <Button  onClick={handleRegister} sx={{textAlign:'center',alignItems:'center',marginLeft:'44%',marginTop:5}} variant="outlined" size="small">send your details</Button>     
     </>
   );
 }

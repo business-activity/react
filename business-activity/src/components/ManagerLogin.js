@@ -8,18 +8,27 @@ import axios from 'axios';
 
 
 export default function ManagerLogIn() {
+    debugger
     const navigate = useNavigate();
     const [managerName, setName] = React.useState();
     const [managerPassword, setPassword] = React.useState();
     const [managerId, setManagerId] = React.useState();
+
     const namehandleChange = (event) => {
         setName(event.target.value);
     };
     const passwordhandleChange = (event) => {
         setPassword(event.target.value);
     };
+    const navigateAdmin = () => {
+        debugger
+        if(managerId){
+            debugger
+            navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+        }
+    };
 
-    
+    navigateAdmin();
     const verifyManager = async () => {
         debugger
         const user = {
@@ -31,7 +40,7 @@ export default function ManagerLogIn() {
         
         debugger
         try {
-            axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
+           await axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
                 .then((res) => {
                     debugger
                     const userId = res.data.id;
@@ -47,11 +56,14 @@ export default function ManagerLogIn() {
             debugger
             alert(err);
         }
-        finally{
-            if(managerId){
-                navigate('/admin', { state: { managerId: managerId } }, { replace: true });
-            }
-        }
+        // finally{
+        //     debugger
+        //     if(managerId){
+        //         debugger
+        //         idhandleChange();
+        //         navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+        //     }
+        // }
         
     }
     // React.useEffect(() => {
