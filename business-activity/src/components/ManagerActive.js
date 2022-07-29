@@ -136,7 +136,7 @@ export default function Admin() {
               ))}
               <br></br>
               <br></br>
-              {<Button onClick={()=>navigate('/addService',{state:{businessId:businessId}})} variant="contained" size="medium">
+              {<Button onClick={()=>navigate('/addService',{state:{businessId:businessId,businessName:business.businessName}})} variant="contained" size="medium">
                 add service to {business.businessName}
               </Button>
              /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
