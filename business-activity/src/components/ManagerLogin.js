@@ -11,6 +11,7 @@ export default function ManagerLogIn() {
     const navigate = useNavigate();
     const [managerName, setName] = React.useState();
     const [managerPassword, setPassword] = React.useState();
+    const [managerId, setManagerId] = React.useState();
     const namehandleChange = (event) => {
         setName(event.target.value);
     };
@@ -18,71 +19,53 @@ export default function ManagerLogIn() {
         setPassword(event.target.value);
     };
 
-
+    
     const verifyManager = async () => {
         debugger
         const user = {
             "username": managerName,
             "password": managerPassword
         };
-        const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
-        // try {
-        //     debugger
-        //     axios.post(`https://meetings-test.herokuapp.com/user/signin`, user).then((res) => {
-        //         debugger
-        //         if (res.data.id) {
-        //             debugger
-        //             alert('SUCCEED');
-        //             let userId = res.data.id;
-        //             navigate('/admin', { state: { managerId: userId} });
-        //         } else {
-        //             debugger              
-                    navigate('/admin', { state: { managerId: ourId } });
-        //         }
-        //     })
-        // } catch (err){
-        //     debugger
-        //     alert(err);
-        // }
+        // const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
+        // setId(ourId);
+        
+        debugger
+        try {
+            axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
+                .then((res) => {
+                    debugger
+                    const userId = res.data.id;
+                    if (userId) {
+                        debugger
+                        setManagerId(userId);
+                    }
+                    debugger
+                })
+                .catch((err) => { console.error(err); })
+        }
+        catch (err) {
+            debugger
+            alert(err);
+        }
+        finally{
+            if(managerId){
+                navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+            }
+        }
+        
     }
-
-
-
-
-    // debugger
-    // const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
-    // try {
-    //     debugger
-    //     const user={
-    //         "username": managerName,
-    //         "password": managerPassword
-    //     };
-    //     debugger
-    //     const res = await axios.post(`https://meetings-test.herokuapp.com/user/signin`,user)
-    //         .catch((err) => {
-    //             debugger;
-    //             Alert(err + "in signin catch");
-    //         });
-    //     // .then((res) => {
-    //     if (res.data.userId) {
-    //         debugger
-    //         alert('SUCCEED');
-    //         let id = res.data.userId;
-    //         navigate('/admin', { state: { managerId: id } });
-    //     } else {
-    //         Alert("owner not found");
-    //         navigate('/admin', { state: { managerId: ourId } });
-    //     }
-    //     // })
-    // } catch (err) {
-    //     debugger
-    //     Alert(err);
-    // }
-    // debugger
-
+    // React.useEffect(() => {
+    //   return () => {
+    //     navigate('/admin', { state: { managerId: managerId } })
+    //   };
+    // }, [managerId])
     return (
         <>
-            <form onSubmit={verifyManager}>
+            <form onSubmit=
+                {
+                    verifyManager
+                }
+            >
                 <Box
                     component="form"
 

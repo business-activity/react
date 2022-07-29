@@ -80,8 +80,8 @@ export default function BusinessForUsers() {
         async function getBusiness() {
             debugger;
             try {
-                await axios.get("https://meetings-test.herokuapp.com/business")
-                .then((res) => {
+               const res= await axios.get("https://meetings-test.herokuapp.com/business")
+                // .then((res) => {
                     let tempList = res.data.map((item) => {
                         let b = {
                             id: item.id,
@@ -94,17 +94,17 @@ export default function BusinessForUsers() {
                         return b;
                     })
                     setBusinessList(tempList);
-                })
-                .catch((err) => {
-                    debugger
-                    console.log(err);
-                  })
+                // })
+                // .catch((err) => {
+                //     debugger
+                //     console.log(err);
+                //   })
             } catch (err) {
                 console.log(err);
             }
         }
         getBusiness();
-    }, []);
+    },[]);
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
