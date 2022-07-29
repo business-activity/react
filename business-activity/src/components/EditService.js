@@ -102,7 +102,7 @@ export default function EditService() {
         // }
     }
     useEffect(() => {
-        async function getBusiness() {
+        async function getService() {
             debugger
             debugger;
             try {
@@ -135,7 +135,7 @@ export default function EditService() {
                 console.log(err);
             }
         }
-        getBusiness();
+        getService();
     }, []);
 
 

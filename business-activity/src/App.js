@@ -3,10 +3,11 @@ import BusinessForUsers from "./components/Business";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BusinessDetails from "./components/BusinessDetails";
 import UserFormDetails from "./components/UserFormDetails";
-import ManagerLogIn from "./components/ManagerLogin";
+// import ManagerLogIn from "./components/ManagerLogin";
 import Admin from './components/ManagerActive'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import EditService from "./components/EditService";
+import AddService from "./components/AddService";
 //import { EditService } from "./components/EditService";
 
 
@@ -36,6 +37,7 @@ theme = createTheme(theme, {
           <Route path='/managerlogIn/admin' element={<Admin/>}/>
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/editServices' element={<EditService/>}/>
+          <Route path='/addService' element={<AddService/>}/>
         </Routes>
       </Router>     
     </div>
