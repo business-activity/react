@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -19,7 +19,7 @@ export default function Admin() {
       debugger;
       try {
         debugger
-        const res = await axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`)
+        await axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`)
           .then((res) => {
             debugger
             setBusiness(res.data)
@@ -34,7 +34,7 @@ export default function Admin() {
     getBusiness();
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     async function getServices() {
       debugger;
       try {
@@ -91,7 +91,7 @@ useEffect(() => {
             height: '89vh',
             marginTop: "-2.9%"
           }}
-          >
+        >
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
@@ -104,7 +104,7 @@ useEffect(() => {
             />
             <div>
 
-            
+
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
 
                 Click on one of your service to update or delete it
@@ -114,7 +114,7 @@ useEffect(() => {
 
 
                 <div key={item.id}>
-               {item.id&&<Button key={item.id}  onClick={()=>{ navigatePageE(item.id)}} sx={{ marginBottom: "1%" }} variant="outlined">{item.name}</Button> } 
+                  {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%" }} variant="outlined">{item.name}</Button>}
 
                 </div>
 

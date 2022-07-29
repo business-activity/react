@@ -29,7 +29,6 @@ export default function ManagerLogIn() {
         // const ourId = 'e9ff4ee6-88d0-48b7-8aa0-dd69fc1a8584';
         // setId(ourId);
         
-        
         debugger
         try {
             axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
@@ -43,21 +42,17 @@ export default function ManagerLogIn() {
                     debugger
                 })
                 .catch((err) => { console.error(err); })
-                // .finally(() => {
-                //     debugger
-                //     managerId ?
-                //     navigate('/admin', { state: { managerId: ourId } }):
-                //         alert('not found');
-                //     console.log('done');
-                // });
         }
         catch (err) {
             debugger
             alert(err);
         }
-        if(managerId){
-            navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+        finally{
+            if(managerId){
+                navigate('/admin', { state: { managerId: managerId } }, { replace: true });
+            }
         }
+        
     }
     // React.useEffect(() => {
     //   return () => {
