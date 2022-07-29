@@ -123,11 +123,11 @@ export default function Admin() {
                 placeholder={business.ownersName}
                 multiline
               />
-              <div>
+              <Box>
               <Button onClick={updateBusiness()} variant="contained" size="medium">
                update your business details
               </Button>
-              </div>
+              </Box>
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
 
                 Click on one of your service to update or delete it
