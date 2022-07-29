@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -104,7 +105,29 @@ export default function Admin() {
             />
             <div>
 
+              <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
 
+                here- you can change business details:
+              </Typography>
+              <TextField
+              sx={{margin:'1%'}}
+                id="outlined-textarea"
+                label={business.businessName}
+                placeholder={business.businessName}
+                multiline
+              />
+              <TextField
+                sx={{margin:'1%'}}
+                id="outlined-textarea"
+                label={business.ownersName}
+                placeholder={business.ownersName}
+                multiline
+              />
+              <div>
+              <Button onClick={updateBusiness()} variant="contained" size="medium">
+               update your business details
+              </Button>
+              </div>
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
 
                 Click on one of your service to update or delete it
