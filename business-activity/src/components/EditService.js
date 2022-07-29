@@ -22,6 +22,25 @@ export default function EditService() {
     const [services, setServices] = useState([]);
     const location = useLocation();
     const form = location.state;
+     const deleteServices =async () => {
+    //     try {
+    //         await axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
+    //             .then((res) => {
+    //                 console.log(res)
+    //                 alert("your Services deleted!!!")
+                  
+    //             })
+    //             .catch((err) => {
+    //                 debugger
+    //                 console.log(err);
+    //             })
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+     }
+    const updateServices = () => {
+
+    }
     useEffect(() => {
         async function getBusiness() {
             debugger
@@ -39,12 +58,12 @@ export default function EditService() {
                             duration: res.data.durationOfMeeting,
                             cost: res.data.cost,
                             openingHours: res.data.OpeningHours,
-                         
-                                number: res.data.address.number,
-                                street: res.data.address.street,
-                                city: res.data.address.city
 
-                         
+                            number: res.data.address.number,
+                            street: res.data.address.street,
+                            city: res.data.address.city
+
+
                         }
                         setServices(tempList);
                     })
@@ -65,7 +84,7 @@ export default function EditService() {
         <>
 
             {services &&
-                <Card sx={{ minWidth: 275, textAlign: 'center', marginTop: '5%' }}>
+                <Card sx={{ minWidth: 275, textAlign: 'center' }}>
                     <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
                         edit your service
                     </Typography>
@@ -130,41 +149,38 @@ export default function EditService() {
                         <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
                             address:
                         </Typography>
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                            city:
-                        </Typography>
+
                         <TextField
-                                id="outlined-textarea"
-                                label={services.city}
-                                placeholder={services.city}
-                                multiline
-                            />
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                            street:
-                        </Typography>
+                            sx={{ margin: '1%' }}
+                            id="outlined-textarea"
+                            label={services.city}
+                            placeholder={services.city}
+                            multiline
+                        />
+
                         <TextField
-                                id="outlined-textarea"
-                                label={services.street}
-                                placeholder={services.street}
-                                multiline
-                            />
-                        <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h6" component="div">
-                            number:
-                        </Typography>
+                            sx={{ margin: '1%' }}
+                            id="outlined-textarea"
+                            label={services.street}
+                            placeholder={services.street}
+                            multiline
+                        />
+
                         <TextField
-                                id="outlined-textarea"
-                                label={services.number}
-                                placeholder={services.number}
-                                multiline
-                            />
+                            sx={{ margin: '1%' }}
+                            id="outlined-textarea"
+                            label={services.number}
+                            placeholder={services.number}
+                            multiline
+                        />
 
 
 
                     </CardContent>
-                   
-                    <Button sx={{margin:'2%'}} variant="contained">update your details</Button>
-                    <Button sx={{margin:'2%'}}  variant="contained">delete your services</Button>
-                   
+
+                    <Button onClick={updateServices()} sx={{ margin: '2%' }} variant="contained">update your details</Button>
+                    <Button onClick={deleteServices()} sx={{ margin: '2%' }} variant="contained">delete your services</Button>
+
                 </Card>}
         </>
     );
