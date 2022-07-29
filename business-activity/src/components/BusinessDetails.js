@@ -158,8 +158,8 @@ export default function BusinessDetails() {
               <Grid item xs={2} sm={3} md={3} key={item.name}>
                 <Card >
                   <CardContent>
-                    <Typography variant="h6" component="div">
-                      name: {item.name}
+                    <Typography variant="h5" component="div" color="primary">
+                      {item.name}
                     </Typography>
                     <Typography variant="h6" component="div">
                       num of meetings: {item.num}
