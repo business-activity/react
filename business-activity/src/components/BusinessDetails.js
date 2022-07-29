@@ -99,12 +99,12 @@ export default function BusinessDetails() {
       debugger;
       try {
         debugger
-        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=4eac7b0e-4464-4cd3-a909-92c26c3ca46e`)
+        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${form.id}`)
         // .then((res) => {
         debugger
         let tempList = await res.data.map((item) => {
           let b = {
-            name: item.serviceName,
+            name: item.name,
             num: item.numOfMeetings,
             duration: item.durationOfMeeting,
             cost: item.cost,
