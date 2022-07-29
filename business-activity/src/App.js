@@ -6,6 +6,9 @@ import UserFormDetails from "./components/UserFormDetails";
 import ManagerLogIn from "./components/ManagerLogin";
 import Admin from './components/ManagerActive'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import EditService from "./components/EditService";
+//import { EditService } from "./components/EditService";
+
 
 function App() {
   
@@ -32,6 +35,7 @@ theme = createTheme(theme, {
           {/* <Route path='/managerlogIn' element={<ManagerLogIn/>}/> */}
           <Route path='/managerlogIn/admin' element={<Admin/>}/>
           <Route path='/admin' element={<Admin/>}/>
+          <Route path='/editServices' element={<EditService/>}/>
         </Routes>
       </Router>     
     </div>
