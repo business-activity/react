@@ -20,9 +20,9 @@ export default function Admin() {
   const form = location.state;
   useEffect(() => {
     async function getBusiness() {
-      debugger;
+      // debugger;
       try {
-        debugger
+        // debugger
         await axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`)
           .then((res) => {
             debugger
@@ -40,12 +40,12 @@ export default function Admin() {
 
   useEffect(() => {
     async function getServices() {
-      debugger;
+      // debugger;
       try {
-        debugger
+        // debugger
         const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${businessId}`)
         // .then((res) => {
-        debugger
+        // debugger
         let tempList = await res.data.map((item) => {
           let b = {
             id: item.id,
@@ -69,14 +69,25 @@ export default function Admin() {
     }
     getServices();
   });
-  const inputRef_ownersName= useRef();
-  const inputRef_businessName= useRef();
-  const updateBusiness = async() => {
-    const updateBusiness={
-      "ownersName": inputRef_ownersName.current?.value,
-      "businessName": inputRef_businessName.current?.value
+  const inputRef_ownersName = useRef();
+  const inputRef_businessName = useRef();
+  async function updateBusiness() {
+    debugger
+    const updateBusiness =
+    {
+      "business": {
+        "ownersName": inputRef_ownersName.current?.value,
+        "businessName": inputRef_businessName.current?.value
+      }
     }
-    await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4');
+    const res = await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4', updateBusiness)
+    .then((response) => {
+      debugger
+      alert(JSON.stringify(response.data) + 'Successfully');
+    }).catch((error) => {
+      debugger
+      alert(JSON.stringify(error) + 'Error: ' + error.message)
+    });
   }
 
   const navigatePageE = (id) => {
@@ -116,7 +127,7 @@ export default function Admin() {
                 here- you can change business details:
               </Typography>
               <TextField
-              sx={{margin:'1%'}}
+                sx={{ margin: '1%' }}
                 id="outlined-textarea"
                 label={business.businessName}
                 placeholder={business.businessName}
@@ -124,7 +135,7 @@ export default function Admin() {
                 multiline
               />
               <TextField
-                sx={{margin:'1%'}}
+                sx={{ margin: '1%' }}
                 id="outlined-textarea"
                 label={business.ownersName}
                 placeholder={business.ownersName}
@@ -132,9 +143,9 @@ export default function Admin() {
                 multiline
               />
               <Box>
-              <Button onClick={updateBusiness()} variant="contained" size="medium">
-               update your business details
-              </Button>
+                <Button onClick={() => updateBusiness()} variant="contained" size="medium">
+                  update your business details
+                </Button>
               </Box>
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
                 Click on one of your service to update or delete it
@@ -146,7 +157,7 @@ export default function Admin() {
               ))}
               <br></br>
               <br></br>
-              {<Button onClick={()=>navigate('/addService',{state:{businessId:businessId,businessName:business.businessName}})} variant="contained" size="medium">
+              {<Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium">
                 add service to {business.businessName}
               </Button>
              /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
