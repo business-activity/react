@@ -158,7 +158,7 @@ export default function Admin() {
                 </Button>
               </Box>
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
-                Click on one of your service to update or delete it
+                Click on one of your services to update or delete it
               </Typography>
               <div id='business-div'>
                 {services?.map((item) => (
