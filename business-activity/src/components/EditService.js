@@ -71,14 +71,14 @@ export default function EditService() {
 
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this service!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
           })
           .then((willDelete) => {
             if (willDelete) {
-              swal("Poof! Your imaginary file has been deleted!", {
+              swal("Poof! Your service deleted!", {
                 icon: "success",
               });
               try {
@@ -86,7 +86,7 @@ export default function EditService() {
                  axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
                     .then((res) => {
                         console.log(res)
-                        alert("your Services deleted!!!")
+                       
     
                     })
                     .catch((err) => {
@@ -97,7 +97,13 @@ export default function EditService() {
                 console.log(err);
             }
             } else {
-              swal("Your imaginary file is safe!");
+                swal({
+                  
+                    text: "Your service file is safe!",
+                    icon: "success",
+                   
+                  });
+              
             }
           });
 
