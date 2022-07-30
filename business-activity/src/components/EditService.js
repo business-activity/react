@@ -47,46 +47,53 @@ export default function EditService() {
         //     }
     }
     const updateServices = async () => {
-        // debugger
-        // const dataInput = {
-        //     "numOfMeetings": inputNum.current?.value,
-        //     "durationOfMeeting": inputDuration.current?.value,
-        //     "cost": inputCost.current?.value,
-        //     "OpeningHours": inputOpeningHours.current?.value,
-        //     "address": {
-        //         "city": inputCity.current?.value,
-        //         "street": inputStreet.current?.value,
-        //         "number": inputNumber.current?.value,
-        //     }
-        // }
-        // console.log(dataInput);
-        // setUpdateService(dataInput)
+        debugger
+        const dataInput = {
+           "service":{
+                "numOfMeetings": inputNum.current?.value,
+                "durationOfMeeting": inputDuration.current?.value,
+                "cost": inputCost.current?.value,
+                "OpeningHours": inputOpeningHours.current?.value,
+                "address": {
+                  "city": inputCity.current?.value,
+                  "street": inputStreet.current?.value,
+                  "number": inputNumber.current?.value,
+            }}
+        }
+
+    
 
 
-
-
-
-
-        // debugger
+    //     {"service":{
+    //         "numOfMeetings": 4,
+    //         "durationOfMeeting": "1 hour",
+    //         "cost": "200$",
+    //         "OpeningHours": "10:00-21:30",
+    //         "address": {
+    //             "city": "bnei-brak",
+    //             "street": "chazon-his",
+    //             "number": 2
+    //         }
+    //     }
+    // }
+        console.log(dataInput);
+    
+        debugger
       
-        // try {
-        //     debugger
+        try {
+            debugger
       
-        //     await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{
-        //         "service": {
-        //             dataInput
-        //         }
-        //     }}`)
-        //         .then((res) => {
-        //             console.log(res.data)
-        //         })
-        //         .catch((err) => {
-        //             debugger
-        //             console.log(err);
-        //         })
-        // } catch (err) {
-        //     console.log(err);
-        // }
+            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`,dataInput)
+                .then((res) => {
+                    console.log(res.data)
+                })
+                .catch((err) => {
+                    debugger
+                    console.log(err);
+                })
+        } catch (err) {
+            console.log(err);
+        }
     }
     useEffect(() => {
         async function getService() {
@@ -136,7 +143,7 @@ export default function EditService() {
                                     service name:
                                 </Typography>
                                 <TextField
-                                    ref={inputName}
+                                    inputRef={inputName}
                                     id="outlined-textarea"
                                     label={services.name}
                                     placeholder={services.name}
@@ -149,7 +156,7 @@ export default function EditService() {
                                     number of meeting:
                                 </Typography>
                                 <TextField
-                                    ref={inputNum}
+                                    inputRef={inputNum}
                                     id="outlined-textarea"
                                     label={services.num}
                                     placeholder={services.num}
@@ -161,7 +168,7 @@ export default function EditService() {
                                     duration of meeting
                                 </Typography>
                                 <TextField
-                                    ref={inputDuration}
+                                    inputRef={inputDuration}
                                     id="outlined-textarea"
                                     label={services.duration}
                                     placeholder={services.duration}
@@ -173,7 +180,7 @@ export default function EditService() {
                                     open in Hours:
                                 </Typography>
                                 <TextField
-                                    ref={inputOpeningHours}
+                                    inputRef={inputOpeningHours}
                                     id="outlined-textarea"
                                     label={services.openingHours}
                                     placeholder={services.openingHours}
@@ -185,7 +192,7 @@ export default function EditService() {
                                     cost:
                                 </Typography>
                                 <TextField
-                                    ref={inputCost}
+                                    inputRef={inputCost}
                                     id="outlined-textarea"
                                     label={services.cost}
                                     placeholder={services.cost}
@@ -198,7 +205,7 @@ export default function EditService() {
                             </Typography>
 
                             <TextField
-                                ref={inputCity}
+                                inputRef={inputCity}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.city}
@@ -207,7 +214,7 @@ export default function EditService() {
                             />
 
                             <TextField
-                                ref={inputStreet}
+                                inputRef={inputStreet}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.street}
@@ -216,7 +223,7 @@ export default function EditService() {
                             />
 
                             <TextField
-                                ref={inputNumber}
+                                inputRef={inputNumber}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.numberM}
@@ -228,7 +235,7 @@ export default function EditService() {
 
                         </CardContent>
 
-                        <Button onClick={updateServices()} sx={{ margin: '2%' }} variant="contained">update your details</Button>
+                        <Button onClick={updateServices}  sx={{ margin: '2%' }} variant="contained">update your details</Button>
                         <Button onClick={deleteServices()} sx={{ margin: '2%' }} variant="contained">delete your services</Button>
                     </form>
                 </Card>}
