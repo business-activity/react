@@ -71,12 +71,12 @@ export default function Admin() {
   });
   const inputRef_ownersName= useRef();
   const inputRef_businessName= useRef();
-  const updateBusiness = () => {
+  const updateBusiness = async() => {
     const updateBusiness={
       "ownersName": inputRef_ownersName.current?.value,
       "businessName": inputRef_businessName.current?.value
     }
-
+    await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4');
   }
 
   const navigatePageE = (id) => {

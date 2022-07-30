@@ -136,7 +136,7 @@ export default function EditService() {
                                     service name:
                                 </Typography>
                                 <TextField
-                                    ref={inputName}
+                                    inputRef={inputName}
                                     id="outlined-textarea"
                                     label={services.name}
                                     placeholder={services.name}
@@ -149,7 +149,7 @@ export default function EditService() {
                                     number of meeting:
                                 </Typography>
                                 <TextField
-                                    ref={inputNum}
+                                    inputRef={inputNum}
                                     id="outlined-textarea"
                                     label={services.num}
                                     placeholder={services.num}
@@ -161,7 +161,7 @@ export default function EditService() {
                                     duration of meeting
                                 </Typography>
                                 <TextField
-                                    ref={inputDuration}
+                                    inputRef={inputDuration}
                                     id="outlined-textarea"
                                     label={services.duration}
                                     placeholder={services.duration}
@@ -173,7 +173,7 @@ export default function EditService() {
                                     open in Hours:
                                 </Typography>
                                 <TextField
-                                    ref={inputOpeningHours}
+                                    inputRef={inputOpeningHours}
                                     id="outlined-textarea"
                                     label={services.openingHours}
                                     placeholder={services.openingHours}
@@ -185,7 +185,7 @@ export default function EditService() {
                                     cost:
                                 </Typography>
                                 <TextField
-                                    ref={inputCost}
+                                    inputRef={inputCost}
                                     id="outlined-textarea"
                                     label={services.cost}
                                     placeholder={services.cost}
@@ -198,7 +198,7 @@ export default function EditService() {
                             </Typography>
 
                             <TextField
-                                ref={inputCity}
+                                inputRef={inputCity}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.city}
@@ -207,7 +207,7 @@ export default function EditService() {
                             />
 
                             <TextField
-                                ref={inputStreet}
+                                inputRef={inputStreet}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.street}
@@ -216,7 +216,7 @@ export default function EditService() {
                             />
 
                             <TextField
-                                ref={inputNumber}
+                                inputRef={inputNumber}
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.numberM}
