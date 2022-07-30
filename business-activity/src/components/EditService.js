@@ -19,7 +19,6 @@ export default function EditService() {
     const [updaeService, setUpdateService] = useState()
     const location = useLocation();
     const form = location.state;
-    const inputId = useRef();
     const inputName = useRef();
     const inputNum = useRef();
     const inputDuration = useRef();
@@ -48,33 +47,46 @@ export default function EditService() {
         //     }
     }
     const updateServices = async () => {
-        debugger
-        const dataInput = {
-            "numOfMeetings": inputNum.current?.value,
-            "durationOfMeeting": inputDuration.current?.value,
-            "cost": inputCost.current?.value,
-            "OpeningHours": inputOpeningHours.current?.value,
-            "address": {
-                "city": inputCity.current?.value,
-                "street": inputStreet.current?.value,
-                "number": inputNumber.current?.value,
-            }
-        }
-        console.log(dataInput);
-        debugger
-        try {
-            debugger
-            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`, dataInput)
-                .then((res) => {
-                    console.log(res.data)
-                })
-                .catch((err) => {
-                    debugger
-                    console.log(err);
-                })
-        } catch (err) {
-            console.log(err);
-        }
+        // debugger
+        // const dataInput = {
+        //     "numOfMeetings": inputNum.current?.value,
+        //     "durationOfMeeting": inputDuration.current?.value,
+        //     "cost": inputCost.current?.value,
+        //     "OpeningHours": inputOpeningHours.current?.value,
+        //     "address": {
+        //         "city": inputCity.current?.value,
+        //         "street": inputStreet.current?.value,
+        //         "number": inputNumber.current?.value,
+        //     }
+        // }
+        // console.log(dataInput);
+        // setUpdateService(dataInput)
+
+
+
+
+
+
+        // debugger
+      
+        // try {
+        //     debugger
+      
+        //     await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{
+        //         "service": {
+        //             dataInput
+        //         }
+        //     }}`)
+        //         .then((res) => {
+        //             console.log(res.data)
+        //         })
+        //         .catch((err) => {
+        //             debugger
+        //             console.log(err);
+        //         })
+        // } catch (err) {
+        //     console.log(err);
+        // }
     }
     useEffect(() => {
         async function getService() {
