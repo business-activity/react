@@ -20,7 +20,7 @@ export default function AddService() {
     const building_inputRef = useRef();
     const street_inputRef = useRef();
     const city_inputRef = useRef();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const postService = async () => {
         debugger
         const newService = {
@@ -43,15 +43,15 @@ export default function AddService() {
         const res = await axios.post("https://meetings-test.herokuapp.com/service", newService)
             .then((response) => {
                 debugger
-               
+
                 swal({
                     title: "Good job!",
                     text: "service added to your business",
                     icon: "success",
                     button: "Aww yiss!",
-                  }).then(() => {
+                }).then(() => {
                     navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
-                  });
+                });
             })
             .catch((error) => {
                 debugger
@@ -150,6 +150,9 @@ export default function AddService() {
                 </div>
                 <Button color="primary" variant="outlined" onClick={postService}>SAVE</Button>
             </Box>
+            <Button onClick={() => {
+                navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
+            }} variant="outlined" size="medium" sx={{ position: 'fixed', left: '2vh', top: '2vh' }}>back↩</Button>
         </>
     );
 }
