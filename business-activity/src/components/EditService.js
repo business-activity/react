@@ -69,21 +69,40 @@ export default function EditService() {
     }
     const deleteServices = async () => {
 
-        try {
-            debugger
-            await axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
-                .then((res) => {
-                    console.log(res)
-                    alert("your Services deleted!!!")
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+              try {
+                
+                 axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
+                    .then((res) => {
+                        console.log(res)
+                        alert("your Services deleted!!!")
+    
+                    })
+                    .catch((err) => {
+                        debugger
+                        console.log(err);
+                    })
+            } catch (err) {
+                console.log(err);
+            }
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          });
 
-                })
-                .catch((err) => {
-                    debugger
-                    console.log(err);
-                })
-        } catch (err) {
-            console.log(err);
-        }
+
+       
 }
     useEffect(() => {
         async function getService() {
