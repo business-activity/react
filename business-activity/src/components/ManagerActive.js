@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './business.css'
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -8,7 +9,8 @@ import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { useRef } from 'react';
-
+import swal from 'sweetalert';
+import Grid from "@mui/material/Grid";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -81,13 +83,18 @@ export default function Admin() {
       }
     }
     const res = await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4', updateBusiness)
-    .then((response) => {
-      debugger
-      alert(JSON.stringify(response.data) + 'Successfully');
-    }).catch((error) => {
-      debugger
-      alert(JSON.stringify(error) + 'Error: ' + error.message)
-    });
+      .then((res) => {
+        swal({
+          title: "Saved!",
+          text: "your details update",
+          icon: "success",
+          button: "Aww yiss!",
+        });
+      })
+      .catch((error) => {
+        debugger
+        alert(JSON.stringify(error) + 'Error: ' + error.message)
+      });
   }
 
   const navigatePageE = (id) => {
@@ -129,16 +136,16 @@ export default function Admin() {
               <TextField
                 sx={{ margin: '1%' }}
                 id="outlined-textarea"
-                label={business.businessName}
-                value={business.businessName}
+                label="business Name"
+                defaultValue={business.businessName}
                 inputRef={inputRef_businessName}
                 multiline
               />
               <TextField
                 sx={{ margin: '1%' }}
                 id="outlined-textarea"
-                label={business.ownersName}
-                value={business.ownersName}
+                label="owners Name"
+                defaultValue={business.ownersName}
                 inputRef={inputRef_ownersName}
                 multiline
               />
@@ -150,11 +157,13 @@ export default function Admin() {
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
                 Click on one of your service to update or delete it
               </Typography>
+              <div id='business-div'>
               {services?.map((item) => (
                 <div key={item.id}>
-                  {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%" }} variant="outlined">{item.name}</Button>}
+                  {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%", padding:'1vw',whiteSpace:'normal',wordWrap: 'break-word', maxWidth:'16vw'}} variant="outlined">{item.name}</Button>}
                 </div>
               ))}
+              </div>
               <br></br>
               <br></br>
               {<Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium">
