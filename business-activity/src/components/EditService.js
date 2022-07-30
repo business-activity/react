@@ -47,11 +47,8 @@ export default function EditService() {
         //     }
     }
     const updateServices = async () => {
-
-
         debugger
         const dataInput = {
-
             "numOfMeetings": inputNum.current?.value,
             "durationOfMeeting": inputDuration.current?.value,
             "cost": inputCost.current?.value,
@@ -60,7 +57,6 @@ export default function EditService() {
                 "city": inputCity.current?.value,
                 "street": inputStreet.current?.value,
                 "number": inputNumber.current?.value,
-
             }
         }
         console.log(dataInput);
@@ -82,9 +78,7 @@ export default function EditService() {
                 }
             }}`)
                 .then((res) => {
-
                     console.log(res.data)
-
                 })
                 .catch((err) => {
                     debugger
@@ -111,12 +105,9 @@ export default function EditService() {
                             duration: res.data.durationOfMeeting,
                             cost: res.data.cost,
                             openingHours: res.data.OpeningHours,
-
                             numberM: res.data.address.number,
                             street: res.data.address.street,
                             city: res.data.address.city
-
-
                         }
                         setServices(tempList);
                     })
@@ -130,9 +121,6 @@ export default function EditService() {
         }
         getService();
     }, []);
-
-
-
     return (
         <>
 
