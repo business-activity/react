@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
-
+import swal from 'sweetalert';
 
 // PUT /service/:id - update service
 // body: {
@@ -85,7 +85,12 @@ export default function EditService() {
       
             await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`,dataInput)
                 .then((res) => {
-                    console.log(res.data)
+                    swal({
+                        title: "Good job!",
+                        text: "your details update",
+                        icon: "success",
+                        button: "Aww yiss!",
+                      });
                 })
                 .catch((err) => {
                     debugger

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import axios from 'axios';
 import { useRef } from 'react';
+import swal from 'sweetalert';
 
 export default function AddService() {
     const location = useLocation();
@@ -41,7 +42,13 @@ export default function AddService() {
         const res = await axios.post("https://meetings-test.herokuapp.com/service", newService)
             .then((response) => {
                 debugger
-                alert(response);
+               
+                swal({
+                    title: "Good job!",
+                    text: "service added to your business",
+                    icon: "success",
+                    button: "Aww yiss!",
+                  });
             })
             .catch((error) => {
                 debugger
