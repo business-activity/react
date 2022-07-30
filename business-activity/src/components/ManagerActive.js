@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import { useRef } from 'react';
 import swal from 'sweetalert';
 import Grid from "@mui/material/Grid";
+import { FormatAlignJustifySharp } from '@mui/icons-material';
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -112,12 +113,14 @@ export default function Admin() {
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            width: '100vw',
-            height: '89vh',
-            marginTop: "-2.9%"
+            width: '90vw',
+            height: '40vh',
+            marginTop: "-2.9%",
+            display: 'block',
+            margin: '0 auto'
           }}
         >
-
+          <image src={business.img} alt={business.name} />
           <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ textAlign: 'center', color: '#edcf3f' }} gutterBottom variant="h4" component="div">
               update your business {business.businessName}  details
@@ -158,11 +161,11 @@ export default function Admin() {
                 Click on one of your service to update or delete it
               </Typography>
               <div id='business-div'>
-              {services?.map((item) => (
-                <div key={item.id}>
-                  {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%", padding:'1vw',whiteSpace:'normal',wordWrap: 'break-word', maxWidth:'16vw'}} variant="outlined">{item.name}</Button>}
-                </div>
-              ))}
+                {services?.map((item) => (
+                  <div key={item.id}>
+                    {item.id && <Button key={item.id} onClick={() => { navigatePageE(item.id) }} sx={{ marginBottom: "1%", padding: '1vw', whiteSpace: 'normal', wordWrap: 'break-word', maxWidth: '16vw' }} variant="outlined">{item.name}</Button>}
+                  </div>
+                ))}
               </div>
               <br></br>
               <br></br>

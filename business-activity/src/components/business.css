@@ -3,7 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 3vw;
-  margin-left: 5vw;
+  /* margin-left: 5vw; */
   justify-content: center;
   justify-items: center;
   justify-self: center;
