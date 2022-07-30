@@ -7,16 +7,12 @@ import Typography from '@mui/material/Typography';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
+import swal from 'sweetalert';
 
 
-// PUT /service/:id - update service
-// body: {
-// 	service: json object
-// }
 
 export default function EditService() {
     const [services, setServices] = useState([]);
-    const [updaeService, setUpdateService] = useState()
     const location = useLocation();
     const form = location.state;
     const inputName = useRef();
@@ -29,24 +25,9 @@ export default function EditService() {
     const inputStreet = useRef();
 
 
-    const deleteServices = async () => {
-
-        //     try {
-        //         await axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
-        //             .then((res) => {
-        //                 console.log(res)
-        //                 alert("your Services deleted!!!")
-
-        //             })
-        //             .catch((err) => {
-        //                 debugger
-        //                 console.log(err);
-        //             })
-        //     } catch (err) {
-        //         console.log(err);
-        //     }
-    }
+ 
     const updateServices = async () => {
+      
         debugger
         const dataInput = {
            "service":{
@@ -62,20 +43,6 @@ export default function EditService() {
         }
 
     
-
-
-    //     {"service":{
-    //         "numOfMeetings": 4,
-    //         "durationOfMeeting": "1 hour",
-    //         "cost": "200$",
-    //         "OpeningHours": "10:00-21:30",
-    //         "address": {
-    //             "city": "bnei-brak",
-    //             "street": "chazon-his",
-    //             "number": 2
-    //         }
-    //     }
-    // }
         console.log(dataInput);
     
         debugger
@@ -85,7 +52,12 @@ export default function EditService() {
       
             await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`,dataInput)
                 .then((res) => {
-                    console.log(res.data)
+                    swal({
+                        title: "Good job!",
+                        text: "your details update",
+                        icon: "success",
+                        button: "Aww yiss!",
+                      });
                 })
                 .catch((err) => {
                     debugger
@@ -95,6 +67,24 @@ export default function EditService() {
             console.log(err);
         }
     }
+    const deleteServices = async () => {
+
+        try {
+            debugger
+            await axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
+                .then((res) => {
+                    console.log(res)
+                    alert("your Services deleted!!!")
+
+                })
+                .catch((err) => {
+                    debugger
+                    console.log(err);
+                })
+        } catch (err) {
+            console.log(err);
+        }
+}
     useEffect(() => {
         async function getService() {
             debugger
@@ -236,7 +226,7 @@ export default function EditService() {
                         </CardContent>
 
                         <Button onClick={updateServices}  sx={{ margin: '2%' }} variant="contained">update your details</Button>
-                        <Button onClick={deleteServices()} sx={{ margin: '2%' }} variant="contained">delete your services</Button>
+                        <Button onClick={deleteServices} sx={{ margin: '2%' }} variant="contained">delete your services</Button>
                     </form>
                 </Card>}
         </>
