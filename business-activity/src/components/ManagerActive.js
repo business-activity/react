@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
+import { useRef } from 'react';
+
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ export default function Admin() {
   const [businessId, setBusinessId] = useState();
   const [services, setServices] = useState();
   const location = useLocation();
+
   const form = location.state;
   useEffect(() => {
     async function getBusiness() {
@@ -66,8 +69,13 @@ export default function Admin() {
     }
     getServices();
   });
-
+  const inputRef_ownersName= useRef();
+  const inputRef_businessName= useRef();
   const updateBusiness = () => {
+    const updateBusiness={
+      "ownersName": inputRef_ownersName.current?.value,
+      "businessName": inputRef_businessName.current?.value
+    }
 
   }
 
@@ -112,6 +120,7 @@ export default function Admin() {
                 id="outlined-textarea"
                 label={business.businessName}
                 placeholder={business.businessName}
+                inputRef={inputRef_businessName}
                 multiline
               />
               <TextField
@@ -119,6 +128,7 @@ export default function Admin() {
                 id="outlined-textarea"
                 label={business.ownersName}
                 placeholder={business.ownersName}
+                inputRef={inputRef_ownersName}
                 multiline
               />
               <Box>

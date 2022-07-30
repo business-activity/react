@@ -23,9 +23,9 @@ export default function AddService() {
         debugger
         const newService = {
             "business_id": businessId,
-            "name": name_inputRef.current.value,
+            "name": name_inputRef.current?.value,
             "service": {
-                "name": name_inputRef.current.value,
+                "name": name_inputRef.current?.value,
                 "numOfMeetings": numMeetings_inputRef.current?.value,
                 "durationOfMeeting": durationMeeting_inputRef.current?.value,
                 "cost": cost_inputRef.current?.value,
