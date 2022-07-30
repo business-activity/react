@@ -19,7 +19,6 @@ export default function EditService() {
     const [updaeService, setUpdateService] = useState()
     const location = useLocation();
     const form = location.state;
-    const inputId = useRef();
     const inputName = useRef();
     const inputNum = useRef();
     const inputDuration = useRef();
@@ -50,10 +49,9 @@ export default function EditService() {
     const updateServices = async () => {
 
 
-debugger
+        debugger
         const dataInput = {
 
-          
             "numOfMeetings": inputNum.current?.value,
             "durationOfMeeting": inputDuration.current?.value,
             "cost": inputCost.current?.value,
@@ -66,20 +64,23 @@ debugger
             }
         }
         console.log(dataInput);
+        setUpdateService(dataInput)
 
 
 
 
 
 
-
-         debugger
+        debugger
+      
         try {
             debugger
-            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{"service":{
-                dataInput
-            }
-        }}`)
+      
+            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{
+                "service": {
+                    dataInput
+                }
+            }}`)
                 .then((res) => {
 
                     console.log(res.data)
