@@ -36,7 +36,9 @@ export default function ManagerLogIn() {
     //         "password": managerPassword
     //     };
          const ourId = '444b57a8-a5d8-4786-8768-f907f9670f12';
-            setManagerId(ourId);
+         if(managerName==='Naama&Racheli&Ora'&&managerPassword==='NRO'){
+             setManagerId(ourId);
+         }
         
     //     debugger
     //     try {
