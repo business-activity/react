@@ -53,7 +53,7 @@ export default function EditService() {
             await axios.put(`https://meetings-test.herokuapp.com/service/${form.id}`,dataInput)
                 .then((res) => {
                     swal({
-                        title: "Good job!",
+                        title: "Saved!",
                         text: "your details update",
                         icon: "success",
                         button: "Aww yiss!",
@@ -136,7 +136,7 @@ export default function EditService() {
                                     inputRef={inputName}
                                     id="outlined-textarea"
                                     label={services.name}
-                                    placeholder={services.name}
+                                    defaultValue={services.name}
                                     multiline
                                 />
                             </div>
@@ -149,7 +149,7 @@ export default function EditService() {
                                     inputRef={inputNum}
                                     id="outlined-textarea"
                                     label={services.num}
-                                    placeholder={services.num}
+                                    defaultValue={services.num}
                                     multiline
                                 />
                             </div>
@@ -161,7 +161,7 @@ export default function EditService() {
                                     inputRef={inputDuration}
                                     id="outlined-textarea"
                                     label={services.duration}
-                                    placeholder={services.duration}
+                                    defaultValue={services.duration}
                                     multiline
                                 />
                             </div>
@@ -173,7 +173,7 @@ export default function EditService() {
                                     inputRef={inputOpeningHours}
                                     id="outlined-textarea"
                                     label={services.openingHours}
-                                    placeholder={services.openingHours}
+                                    defaultValue={services.openingHours}
                                     multiline
                                 />
                             </div>
@@ -185,7 +185,7 @@ export default function EditService() {
                                     inputRef={inputCost}
                                     id="outlined-textarea"
                                     label={services.cost}
-                                    placeholder={services.cost}
+                                    defaultValue={services.cost}
                                     multiline
                                 />
                             </div>
@@ -199,7 +199,7 @@ export default function EditService() {
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.city}
-                                placeholder={services.city}
+                                defaultValue={services.city}
                                 multiline
                             />
 
@@ -208,7 +208,7 @@ export default function EditService() {
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.street}
-                                placeholder={services.street}
+                                defaultValue={services.street}
                                 multiline
                             />
 
@@ -217,7 +217,7 @@ export default function EditService() {
                                 sx={{ margin: '1%' }}
                                 id="outlined-textarea"
                                 label={services.numberM}
-                                placeholder={services.numberM}
+                                defaultValue={services.numberM}
                                 multiline
                             />
 

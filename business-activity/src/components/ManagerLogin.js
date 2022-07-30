@@ -27,7 +27,6 @@ export default function ManagerLogIn() {
             navigate('/admin', { state: { managerId: managerId } }, { replace: true });
         }
     };
-
     navigateAdmin();
     const verifyManager = async () => {
     //     debugger

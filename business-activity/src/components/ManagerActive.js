@@ -130,7 +130,7 @@ export default function Admin() {
                 sx={{ margin: '1%' }}
                 id="outlined-textarea"
                 label={business.businessName}
-                placeholder={business.businessName}
+                value={business.businessName}
                 inputRef={inputRef_businessName}
                 multiline
               />
@@ -138,7 +138,7 @@ export default function Admin() {
                 sx={{ margin: '1%' }}
                 id="outlined-textarea"
                 label={business.ownersName}
-                placeholder={business.ownersName}
+                value={business.ownersName}
                 inputRef={inputRef_ownersName}
                 multiline
               />
