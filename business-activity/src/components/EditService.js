@@ -47,46 +47,46 @@ export default function EditService() {
         //     }
     }
     const updateServices = async () => {
-        debugger
-        const dataInput = {
-            "numOfMeetings": inputNum.current?.value,
-            "durationOfMeeting": inputDuration.current?.value,
-            "cost": inputCost.current?.value,
-            "OpeningHours": inputOpeningHours.current?.value,
-            "address": {
-                "city": inputCity.current?.value,
-                "street": inputStreet.current?.value,
-                "number": inputNumber.current?.value,
-            }
-        }
-        console.log(dataInput);
-        setUpdateService(dataInput)
+        // debugger
+        // const dataInput = {
+        //     "numOfMeetings": inputNum.current?.value,
+        //     "durationOfMeeting": inputDuration.current?.value,
+        //     "cost": inputCost.current?.value,
+        //     "OpeningHours": inputOpeningHours.current?.value,
+        //     "address": {
+        //         "city": inputCity.current?.value,
+        //         "street": inputStreet.current?.value,
+        //         "number": inputNumber.current?.value,
+        //     }
+        // }
+        // console.log(dataInput);
+        // setUpdateService(dataInput)
 
 
 
 
 
 
-        debugger
+        // debugger
       
-        try {
-            debugger
+        // try {
+        //     debugger
       
-            await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{
-                "service": {
-                    dataInput
-                }
-            }}`)
-                .then((res) => {
-                    console.log(res.data)
-                })
-                .catch((err) => {
-                    debugger
-                    console.log(err);
-                })
-        } catch (err) {
-            console.log(err);
-        }
+        //     await axios.put(`https://meetings-test.herokuapp.com/service/${form.id},${{
+        //         "service": {
+        //             dataInput
+        //         }
+        //     }}`)
+        //         .then((res) => {
+        //             console.log(res.data)
+        //         })
+        //         .catch((err) => {
+        //             debugger
+        //             console.log(err);
+        //         })
+        // } catch (err) {
+        //     console.log(err);
+        // }
     }
     useEffect(() => {
         async function getService() {
