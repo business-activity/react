@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,72 +7,15 @@ import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { TextFormat } from '@mui/icons-material';
-
-// const businessDetails = {
-//   ownersName: "Naama&Racheli&Ora",
-//   businessName: "happy-life",
-//   img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-// }
-// const services = [
-//   {
-//     serviceName: "Group laughter workshop",
-//     numOfMeetings: 7,
-//     durationOfMeeting: "45 miniutes",
-//     cost: "200$",
-//     openingHours: "10:00-20:00",
-//     address: {
-//       city: "Tiberias",
-//       street: "rimon",
-//       number: 5
-//     }
-//   },
-//   {
-//     serviceName: " laughter ",
-//     numOfMeetings: 2,
-//     durationOfMeeting: "45 miniutes",
-//     cost: "40$",
-//     openingHours: "10:00-20:00",
-//     address: {
-//       city: "Tiberias",
-//       street: "rimon",
-//       number: 5
-//     }
-//   },
-//   {
-//     serviceName: " laughter workshop",
-//     numOfMeetings: 7,
-//     durationOfMeeting: "45 miniutes",
-//     cost: "200$",
-//     openingHours: "10:00-20:00",
-//     address: {
-//       city: "Tel-Aviv",
-//       street: "Arlozerov",
-//       number: 2
-//     }
-//   },
-//   {
-//     serviceName: "Group laughter workshop",
-//     numOfMeetings: 30,
-//     durationOfMeeting: "20 miniutes",
-//     cost: "400$",
-//     openingHours: "10:00-20:00",
-//     address: {
-//       city: "Tiberias",
-//       street: "rimon",
-//       number: 5
-//     }
-//   }
-// ]
 
 
 export default function BusinessDetails() {
   debugger
-  const [business, setBusiness] = React.useState();
-  const [services, setServices] = React.useState([]);
+  const [business, setBusiness] = useState();
+  const [services, setServices] = useState([]);
   const location = useLocation();
   const form = location.state;
-  React.useEffect(() => {
+useEffect(() => {
     async function getBusiness() {
       debugger;
       try {
@@ -81,13 +24,9 @@ export default function BusinessDetails() {
         // .then((res) => {
         debugger
         setBusiness(res.data)
-        console.log("inserted: " + res.data);
+        debugger;
+        console.log(res.data);
 
-        // })
-        // .catch((err) => {
-        //   debugger
-        //   console.log(err);
-        // })
       } catch (err) {
         console.log(err)
       }
@@ -95,13 +34,12 @@ export default function BusinessDetails() {
 
     getBusiness();
   }, []);
-  React.useEffect(() => {
+useEffect(() => {
     async function getServices() {
       debugger;
       try {
         debugger
-        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${form.id}`)
-        // .then((res) => {
+        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${form.id}`)     
         debugger
         let tempList = await res.data.map((item) => {
           let b = {
@@ -121,13 +59,7 @@ export default function BusinessDetails() {
           return b;
         })
         setServices(tempList)
-          // .then((console.log("inserted: " + res.data)));
-
-        // })
-        // .catch((err) => {
-        //   debugger
-        //   console.log(err);
-        // })
+       
       } catch (err) {
         console.log(err)
       }
@@ -141,8 +73,7 @@ export default function BusinessDetails() {
       {/* <p>DETAILS</p> */}
       <Card sx={{ maxWidth: 2000, alignItems: 'center', marginTop: 2 }}>
         <CardMedia
-          component="img"
-          width="200"
+          component="img"      
           height="230"
           image={business?.img}
           alt="ha ha ha"

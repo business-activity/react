@@ -94,6 +94,7 @@ export default function BusinessForUsers() {
                         return b;
                     })
                     setBusinessList(tempList);
+                    console.log(res.data)
                 // })
                 // .catch((err) => {
                 //     debugger
