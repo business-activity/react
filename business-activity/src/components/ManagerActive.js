@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { useRef } from 'react';
 import swal from 'sweetalert';
-import Grid from "@mui/material/Grid";
-import { FormatAlignJustifySharp } from '@mui/icons-material';
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -39,7 +37,7 @@ export default function Admin() {
     }
 
     getBusiness();
-  }, []);
+  }, [form.managerId]);
 
   useEffect(() => {
     async function getServices() {
@@ -83,7 +81,7 @@ export default function Admin() {
         "businessName": inputRef_businessName.current?.value
       }
     }
-    const res = await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4', updateBusiness)
+    await axios.put('https://meetings-test.herokuapp.com/business/e97ec65a-a5d9-4834-9bef-3a6189b15fe4', updateBusiness)
       .then((res) => {
         swal({
           title: "Saved!",
@@ -158,7 +156,7 @@ export default function Admin() {
                 </Button>
               </Box>
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
-                Click on one of your service to update or delete it
+                Click on one of your services to update or delete it
               </Typography>
               <div id='business-div'>
                 {services?.map((item) => (

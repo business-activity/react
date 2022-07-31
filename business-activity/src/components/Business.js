@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import './business.css'
 import { BusinessCard } from './BusinessCard';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -106,7 +106,7 @@ export default function BusinessForUsers() {
         }
         getBusiness();
     },[]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);

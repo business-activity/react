@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
@@ -23,7 +22,7 @@ export default function EditService() {
     const inputNumber = useLocation();
     const inputCity = location.state;
     const inputStreet = useRef();
-
+    const navigate=useNavigate();
 
  
     const updateServices = async () => {
@@ -86,8 +85,8 @@ export default function EditService() {
                  axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
                     .then((res) => {
                         console.log(res)
-                       
-    
+                        navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
+
                     })
                     .catch((err) => {
                         debugger
@@ -142,7 +141,7 @@ export default function EditService() {
             }
         }
         getService();
-    }, []);
+    }, [form.id]);
     return (
         <>
 
@@ -246,13 +245,14 @@ export default function EditService() {
                                 multiline
                             />
 
-
-
                         </CardContent>
 
-                        <Button onClick={updateServices}  sx={{ margin: '2%' }} variant="contained">update your details</Button>
-                        <Button onClick={deleteServices} sx={{ margin: '2%' }} variant="contained">delete your services</Button>
+                        <Button onClick={updateServices}  sx={{ margin: '2%' }} variant="contained">update details</Button>
+                        <Button onClick={deleteServices} sx={{ margin: '2%' }} variant="contained">delete this service</Button>
                     </form>
+                    <Button onClick={()=>{
+                        navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
+                    }} variant="outlined" size="medium" sx={{position: 'fixed',left: '2vh', top: '2vh'}}>back↩</Button>
                 </Card>}
         </>
     );
