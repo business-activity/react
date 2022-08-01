@@ -50,7 +50,7 @@ export default function AddService() {
                     icon: "success",
                     button: "Aww yiss!",
                 }).then(() => {
-                    navigate('/admin', { state: { managerId: 'edd83359-0fc1-4f9d-9bb2-2f3650f2b0b4' } }, { replace: true });
+                    navigate('/admin', { state: { managerId: 'd070e48f-77f2-4361-9aa4-25cdb6502cdc' } }, { replace: true });
                 });
             })
             .catch((error) => {
@@ -151,7 +151,7 @@ export default function AddService() {
                 <Button color="primary" variant="outlined" onClick={postService}>SAVE</Button>
             </Box>
             <Button onClick={() => {
-                navigate('/admin', { state: { managerId: 'edd83359-0fc1-4f9d-9bb2-2f3650f2b0b4' } }, { replace: true });
+                navigate('/admin', { state: { managerId: 'd070e48f-77f2-4361-9aa4-25cdb6502cdc' } }, { replace: true });
             }} variant="outlined" size="medium" sx={{ position: 'fixed', left: '2vh', top: '2vh' }}>back↩</Button>
         </>
     );
