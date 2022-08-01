@@ -34,7 +34,7 @@ export default function ManagerLogIn() {
     //         "username": managerName,
     //         "password": managerPassword
     //     };
-         const ourId = '7f40235b-46ad-4f07-8a05-923b84dac214';
+         const ourId = 'edd83359-0fc1-4f9d-9bb2-2f3650f2b0b4';
          if(managerName==='Naama&Ora'&&managerPassword==='NO'){
              setManagerId(ourId);
          }
