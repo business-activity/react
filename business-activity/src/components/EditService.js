@@ -85,7 +85,7 @@ export default function EditService() {
                  axios.delete(`https://meetings-test.herokuapp.com/service/${form.id}`)
                     .then((res) => {
                         console.log(res)
-                        navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
+                        navigate('/admin', { state: { managerId: 'edd83359-0fc1-4f9d-9bb2-2f3650f2b0b4' } }, { replace: true });
 
                     })
                     .catch((err) => {
@@ -119,7 +119,6 @@ export default function EditService() {
                         debugger;
                         console.log(res.data)
                         let tempList = {
-
                             id: res.data.id,
                             name: res.data.name,
                             num: res.data.numOfMeetings,
@@ -251,7 +250,7 @@ export default function EditService() {
                         <Button onClick={deleteServices} sx={{ margin: '2%' }} variant="contained">delete this service</Button>
                     </form>
                     <Button onClick={()=>{
-                        navigate('/admin', { state: { managerId: '444b57a8-a5d8-4786-8768-f907f9670f12' } }, { replace: true });
+                        navigate('/admin', { state: { managerId: 'edd83359-0fc1-4f9d-9bb2-2f3650f2b0b4' } }, { replace: true });
                     }} variant="outlined" size="medium" sx={{position: 'fixed',left: '2vh', top: '2vh'}}>back↩</Button>
                 </Card>}
         </>
