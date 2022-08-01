@@ -15,7 +15,6 @@ export function BusinessCard(props) {
     return (
      
         <div>
-
             <Card sx={{ maxWidth: 345 }} id='imgCard'>
                 <CardMedia
                     component="img"
@@ -28,7 +27,7 @@ export function BusinessCard(props) {
                         {props.business.businessName}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        by {props.business.ownersName}
+                        By {props.business.ownersName}
                     </Typography>
                 </CardContent>
                 <CardActions>

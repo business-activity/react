@@ -23,50 +23,37 @@ const style = {
     p: 4,
 };
 
-
-
 export default function BusinessForUsers() {
-    debugger
     async function getBusiness() {
-        debugger;
         try {
-           const res= await axios.get("https://meetings-test.herokuapp.com/business")
-            // .then((res) => {
-                let tempList = res.data.map((item) => {
-                    let b = {
-                        id: item.id,
-                        img: item.img,
-                        userid: item.userId,
-                        ownersName: item.ownersName,
-                        businessName: item.businessName,
-                        services: item.services
-                    }
-                    return b;
-                })
-                setBusinessList(tempList);
-                console.log(res.data)
-            // })
-            // .catch((err) => {
-            //     debugger
-            //     console.log(err);
-            //   })
+            const res = await axios.get("https://meetings-test.herokuapp.com/business")
+            let tempList = res.data.map((item) => {
+                let business = {
+                    id: item.id,
+                    img: item.img,
+                    userid: item.userId,
+                    ownersName: item.ownersName,
+                    businessName: item.businessName,
+                    services: item.services
+                }
+                return business;
+            })
+            setBusinessList(tempList);
+            console.log(res.data)
         } catch (err) {
             console.log(err);
         }
     }
     const [businessList, setBusinessList] = useState();
     useEffect(() => {
-        
         getBusiness();
-    },[]);
-    // const navigate = useNavigate();
+    }, []);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <>
-
             <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h4" component="div">
                 business page
             </Typography>
@@ -86,7 +73,7 @@ export default function BusinessForUsers() {
                 {
                     < Grid container spacing={{ xs: 2, md: 3, }}>
                         {businessList === undefined ? <p>no business</p> : businessList.map((item) => (
-                            <Grid item xs={2} sm={3} md={3} key={item.id}>                             
+                            <Grid item xs={2} sm={3} md={3} key={item.id}>
                                 <BusinessCard business={item} />
                             </Grid>
                         ))}

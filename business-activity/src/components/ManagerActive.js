@@ -18,15 +18,12 @@ export default function Admin() {
   const [services, setServices] = useState();
   const location = useLocation();
 
-  const form = location.state;
+  const from = location.state;
   useEffect(() => {
     async function getBusiness() {
-      // debugger;
       try {
-        // debugger
-        await axios.get(`https://meetings-test.herokuapp.com/business/${form.managerId}`)
+        await axios.get(`https://meetings-test.herokuapp.com/business/${from.managerId}`)
           .then((res) => {
-            debugger
             setBusiness(res.data)
             setBusinessId(res.data.id)
             console.log("inserted: " + res.data);
@@ -35,20 +32,15 @@ export default function Admin() {
         console.log(err)
       }
     }
-
     getBusiness();
-  }, [form.managerId]);
+  }, [from.managerId]);
 
   useEffect(() => {
     async function getServices() {
-      // debugger;
       try {
-        // debugger
         const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${businessId}`)
-        // .then((res) => {
-        // debugger
         let tempList = await res.data.map((item) => {
-          let b = {
+          let service = {
             id: item.id,
             name: item.name,
             num: item.numOfMeetings,
@@ -61,7 +53,7 @@ export default function Admin() {
               city: item.address.city
             }
           }
-          return b;
+          return service;
         })
         setServices(tempList);
       } catch (err) {
@@ -73,7 +65,6 @@ export default function Admin() {
   const inputRef_ownersName = useRef();
   const inputRef_businessName = useRef();
   async function updateBusiness() {
-    debugger
     const updateBusiness =
     {
       "business": {
@@ -91,18 +82,14 @@ export default function Admin() {
         });
       })
       .catch((error) => {
-        debugger
         alert(JSON.stringify(error) + 'Error: ' + error.message)
       });
   }
-
   const navigatePageE = (id) => {
-    debugger
     console.log(id)
     navigate('/editServices', { state: { id: id } })
   }
   return (
-
     <>
       {business &&
         <div
@@ -120,18 +107,15 @@ export default function Admin() {
         >
           <image src={business.img} alt={business.name} />
           <Box sx={{ textAlign: 'center' }}>
-            <Typography  gutterBottom variant="h4" component="div" sx={{ textAlign: 'center',position:'sticky',top:'0',backgroundColor:'white',color: 'black'}}>
+            <Typography gutterBottom variant="h4" component="div" sx={{ textAlign: 'center', position: 'sticky', top: '0', backgroundColor: 'white', color: 'black' }}>
               update your business {business.businessName}  details
             </Typography>
             <CardMedia
               component="img"
               image={business.img}
-            // alt="your business image"
             />
             <div>
-
               <Typography sx={{ textAlign: 'center' }} gutterBottom variant="h5" component="div">
-
                 here- you can change business details:
               </Typography>
               <TextField
@@ -167,7 +151,7 @@ export default function Admin() {
               </div>
               <br></br>
               <br></br>
-              {<Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium" style={{marginTop:'0'}}>
+              {<Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium" style={{ marginTop: '0' }}>
                 add service to {business.businessName}
               </Button>
              /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">

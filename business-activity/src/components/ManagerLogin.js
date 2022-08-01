@@ -3,12 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-
 
 export default function ManagerLogIn() {
-    debugger
     const navigate = useNavigate();
     const [managerName, setName] = React.useState();
     const [managerPassword, setPassword] = React.useState();
@@ -21,64 +17,46 @@ export default function ManagerLogIn() {
         setPassword(event.target.value);
     };
     const navigateAdmin = () => {
-        debugger
-        if(managerId){
-            debugger
+        if (managerId) {
             navigate('/admin', { state: { managerId: managerId } }, { replace: true });
         }
     };
     navigateAdmin();
     const verifyManager = async () => {
-    //     debugger
-    //     const user = {
-    //         "username": managerName,
-    //         "password": managerPassword
-    //     };
-         const ourId = 'd070e48f-77f2-4361-9aa4-25cdb6502cdc';
-         if(managerName==='Naama&Ora'&&managerPassword==='NO'){
-             setManagerId(ourId);
-         }
-        
-    //     debugger
-    //     try {
-    //         axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
-    //             .then((res) => {
-    //                 debugger
-    //                 const userId = res.data.id;
-    //                 if (userId) {
-    //                     debugger
-    //                     setManagerId(userId);
-    //                 }
-    //                 debugger
-    //             })
-    //             .catch((err) => { console.error(err); })
-    //     }
-    //     catch (err) {
-    //         debugger
-    //         alert(err);
-    //     }
-    //     finally{
-    //         if(managerId){
-                // navigate('/admin', { state: { managerId:ourId } }, { replace: true });
-    //         }
-    //     }
-        
+
+        const ourId = 'd070e48f-77f2-4361-9aa4-25cdb6502cdc';
+        if (managerName === 'Naama&Ora' && managerPassword === 'NO') {
+            setManagerId(ourId);
+        }
+        //     const user = {
+        //         "username": managerName,
+        //         "password": managerPassword
+        //     };
+        //     try {
+        //         axios.post(`https://meetings-test.herokuapp.com/user/signin`, user)
+        //             .then((res) => {
+        //                 const userId = res.data.id;
+        //                 if (userId) {
+        //                     setManagerId(userId);
+        //                 }
+        //             })
+        //             .catch((err) => { console.error(err); })
+        //     }
+        //     catch (err) {
+        //         Console.log(err);
+        //     }
+        //     finally{
+        //         if(managerId){
+        //          navigate('/admin', { state: { managerId:ourId } }, { replace: true });
+        //         }
+        //     }
     }
-    // React.useEffect(() => {
-    //   return () => {
-    //     navigate('/admin', { state: { managerId: managerId } })
-    //   };
-    // }, [managerId])
+
     return (
         <>
-            <form onSubmit=
-                {
-                    verifyManager
-                }
-            >
+            <form onSubmit={verifyManager}>
                 <Box
                     component="form"
-
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
                         textAlign: 'center',

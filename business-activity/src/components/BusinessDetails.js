@@ -14,37 +14,27 @@ export default function BusinessDetails() {
   const [business, setBusiness] = useState();
   const [services, setServices] = useState([]);
   const location = useLocation();
-  const form = location.state;
-useEffect(() => {
+  const from = location.state;
+  useEffect(() => {
     async function getBusiness() {
-      debugger;
       try {
-        debugger
-        const res = await axios.get(`https://meetings-test.herokuapp.com/business?business_id=${form.id}`)
-        // .then((res) => {
-        debugger
+        const res = await axios.get(`https://meetings-test.herokuapp.com/business?business_id=${from.id}`)
         setBusiness(res.data)
-        debugger;
         console.log(res.data);
-
       } catch (err) {
         console.log(err)
       }
     }
-
     getBusiness();
   }, []);
-useEffect(() => {
+  useEffect(() => {
     async function getServices() {
-      debugger;
       try {
-        debugger
-        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${form.id}`)     
-        debugger
-        let tempList = await res.data.map((item) => {
-          let b = {
-            serviceId:item.id,
-            businessId:item.businessId,
+        const res = await axios.get(`https://meetings-test.herokuapp.com/service?business_id=${from.id}`)
+        let tempService = await res.data.map((item) => {
+          let service = {
+            serviceId: item.id,
+            businessId: item.businessId,
             name: item.name,
             num: item.numOfMeetings,
             duration: item.durationOfMeeting,
@@ -56,24 +46,21 @@ useEffect(() => {
               city: item.address.city
             }
           }
-          return b;
+          return service;
         })
-        setServices(tempList)
-       
+        setServices(tempService)
       } catch (err) {
         console.log(err)
       }
     }
     getServices();
   }, []);
-
   const navigate = useNavigate();
   return (
     <>
-      {/* <p>DETAILS</p> */}
       <Card sx={{ maxWidth: 2000, alignItems: 'center', marginTop: 2 }}>
         <CardMedia
-          component="img"      
+          component="img"
           height="230"
           image={business?.img}
           alt="ha ha ha"
@@ -88,7 +75,7 @@ useEffect(() => {
             {business?.ownersName}
           </Typography>
           <Grid container spacing={{ xs: 2, md: 3, }}>
-            {services===[]?<p>no services</p>:services.map((item) => (
+            {services === [] ? <p>no services</p> : services.map((item) => (
               <Grid item xs={2} sm={3} md={3} key={item.name}>
                 <Card >
                   <CardContent >
@@ -105,17 +92,17 @@ useEffect(() => {
                       cost: {item.cost}
                     </Typography>
                     <Typography variant="h6" component="div" textAlign="center">
-                      place of meetings:<br/>
-                       {item.address.number} {item.address.street} ,{item.address.city}
+                      place of meetings:<br />
+                      {item.address.number} {item.address.street} ,{item.address.city}
                     </Typography>
                     <Typography variant="h8" component="div" textAlign="center">
-                    Contact: 0504168639 between: {item.openingHours}
+                      Contact: 0504168639 between: {item.openingHours}
                     </Typography>
-                    
                     <Typography variant="body2">
                       <br />
                     </Typography>
-                    <Button onClick={() => navigate('/BusinessDetails/UserFormDetails',{state:{service:item}})} variant="outlined" size="small">schedule </Button>
+                    <Button onClick={() => navigate('/BusinessDetails/UserFormDetails', { state: { service: item } })}
+                      variant="outlined" size="small">schedule </Button>
                   </CardContent>
                 </Card>
               </Grid>

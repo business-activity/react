@@ -9,6 +9,7 @@ import { useRef } from 'react';
 import swal from 'sweetalert';
 
 export default function AddService() {
+    const managerId=''
     const location = useLocation();
     const businessId = location.state.businessId;
     const businessName = location.state.businessName;
@@ -21,8 +22,9 @@ export default function AddService() {
     const street_inputRef = useRef();
     const city_inputRef = useRef();
     const navigate = useNavigate();
+    
     const postService = async () => {
-        debugger
+    
         const newService = {
             "business_id": businessId,
             "name": name_inputRef.current?.value,
@@ -39,25 +41,21 @@ export default function AddService() {
                 }
             }
         };
-        debugger
         const res = await axios.post("https://meetings-test.herokuapp.com/service", newService)
             .then((response) => {
-                debugger
-
                 swal({
-                    title: "Good job!",
+                    title: "Added successfully!",
                     text: "service added to your business",
                     icon: "success",
                     button: "Aww yiss!",
                 }).then(() => {
-                    navigate('/admin', { state: { managerId: 'd070e48f-77f2-4361-9aa4-25cdb6502cdc' } }, { replace: true });
+                    navigate('/admin', { state: { managerId: managerId } }, { replace: true });
                 });
             })
             .catch((error) => {
-                debugger
-                alert(error);
+                console.log(error);
             });
-        alert(res.data);
+        console.log(res.data);
     }
     return (
         <>
@@ -151,7 +149,7 @@ export default function AddService() {
                 <Button color="primary" variant="outlined" onClick={postService}>SAVE</Button>
             </Box>
             <Button onClick={() => {
-                navigate('/admin', { state: { managerId: 'd070e48f-77f2-4361-9aa4-25cdb6502cdc' } }, { replace: true });
+                navigate('/admin', { state: { managerId: managerId } }, { replace: true });
             }} variant="outlined" size="medium" sx={{ position: 'fixed', left: '2vh', top: '2vh' }}>back↩</Button>
         </>
     );
