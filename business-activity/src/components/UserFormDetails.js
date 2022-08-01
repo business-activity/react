@@ -7,9 +7,10 @@ import { useLocation } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from 'axios';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserFormDetails() {
-
+  const navigate=useNavigate();
   const location = useLocation();
   const service = location.state.service;
   const firstName_ref=useRef();
@@ -17,13 +18,13 @@ export default function UserFormDetails() {
   const mail_ref=useRef();
   const phone_ref=useRef();
 
-  const handleRegister = async () => {
+   const handleRegister=async()=> {
     const newMeeting = {
       business_id: service.businessId,
-      start_time:new Date(),
-      duration:service.durationOfMeeting,
+      start_time:new Date().toLocaleString(),
+      duration:service.duration,
       meeting: {
-        service_Id: service.id,
+        service_Id: service.serviceId,
         userDetails:{
           firstName:firstName_ref.current?.value,
           lastName:lastName_ref.current?.value,
@@ -35,12 +36,12 @@ export default function UserFormDetails() {
     const res = await axios.post("https://meetings-test.herokuapp.com/meeting", newMeeting)
       .then((response) => {
         swal({
-          title: "Added successfully!",
-          text: "service added to your business",
+          title: "Saved!",
+          text: "meeting scheduled for you",
           icon: "success",
           button: "Aww yiss!",
         }).then(() => {
-
+          navigate('/BusinessDetails', { state: { id: service.businessId } })
         });
       })
       .catch((error) => {
@@ -71,51 +72,29 @@ export default function UserFormDetails() {
             placeholder="your first name"
             multiline
             variant="standard"
-            inputRef="firstName_ref"
+            inputRef={firstName_ref}
           />
+          </div>
+          <div>
           <TextField
             id="standard-textarea"
             label="last name"
             placeholder="your last name"
             multiline
             variant="standard"
-            inputRef='lastName_ref'
+            inputRef={lastName_ref}
           />
+          </div>
+          <div>
           <TextField
             id="standard-textarea"
             label="mail address"
             placeholder="your mail"
             multiline
             variant="standard"
-            inputRef='mail_ref'
+            inputRef={mail_ref}
           />
         </div>
-        {/* <div>
-          <TextField
-            id="standard-textarea"
-            label="address-city"
-            placeholder="your city"
-            multiline
-            variant="standard"
-            inputRef='city_ref'
-          />
-          <TextField
-            id="standard-textarea"
-            label="address-street"
-            placeholder="your street"
-            multiline
-            variant="standard"
-            inputRef='street_ref'
-          />
-          <TextField
-            id="standard-textarea"
-            label="address-building"
-            placeholder="your building"
-            multiline
-            variant="standard"
-            inputRef='building_ref'
-          />
-        </div> */}
         <div>
           <TextField
             id="standard-textarea"
@@ -123,7 +102,7 @@ export default function UserFormDetails() {
             placeholder="your phone"
             multiline
             variant="standard"
-            inputRef='phone_ref'
+            inputRef={phone_ref}
           />
           <p>*payment in first meeting</p>
         </div>

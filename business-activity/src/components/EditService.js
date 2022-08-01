@@ -119,7 +119,6 @@ export default function EditService() {
         }
     }
     useEffect(() => {
-
         getService();
     }, [from.id]);
     return (

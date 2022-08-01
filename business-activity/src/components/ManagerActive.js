@@ -151,9 +151,14 @@ export default function Admin() {
               </div>
               <br></br>
               <br></br>
-              {<Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium" style={{ marginTop: '0' }}>
+              {<nav>
+              <Button onClick={() => navigate('/addService', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium" style={{ marginTop: '0' }}>
                 add service to {business.businessName}
               </Button>
+              <Button onClick={() => navigate('/meetings', { state: { businessId: businessId, businessName: business.businessName } })} variant="contained" size="medium" style={{ marginTop: '0' }}>
+                watch meetings of {business.businessName}
+              </Button>
+              </nav>
              /* <Button onClick={deleteBusiness()} sx={{ marginLeft: '4%', marginButton: '2%' }} variant="outlined" size="medium">
                 delete your business
               </Button> */}

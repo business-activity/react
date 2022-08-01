@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 
 export function BusinessCard(props) {
-    debugger;
+    
     const navigate = useNavigate();
     return (
      

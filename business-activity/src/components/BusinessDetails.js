@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function BusinessDetails() {
-  debugger
+
   const [business, setBusiness] = useState();
   const [services, setServices] = useState([]);
   const location = useLocation();
@@ -26,7 +26,7 @@ export default function BusinessDetails() {
       }
     }
     getBusiness();
-  }, []);
+  }, [from.id]);
   useEffect(() => {
     async function getServices() {
       try {
@@ -54,7 +54,7 @@ export default function BusinessDetails() {
       }
     }
     getServices();
-  }, []);
+  }, [from.id]);
   const navigate = useNavigate();
   return (
     <>
@@ -101,7 +101,10 @@ export default function BusinessDetails() {
                     <Typography variant="body2">
                       <br />
                     </Typography>
-                    <Button onClick={() => navigate('/BusinessDetails/UserFormDetails', { state: { service: item } })}
+                    <Button onClick={() => {
+                      debugger
+                      navigate('/UserFormDetails', { state: { service: item } }, { replace: true })
+                    }}
                       variant="outlined" size="small">schedule </Button>
                   </CardContent>
                 </Card>

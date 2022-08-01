@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import './business.css'
 import { BusinessCard } from './BusinessCard';
 import Typography from '@mui/material/Typography';
-// import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
