@@ -109,36 +109,37 @@ export default function EditService() {
 
        
 }
-    useEffect(() => {
-        async function getService() {
-            debugger
-            debugger;
-            try {
-                await axios.get(`https://meetings-test.herokuapp.com/service/${form.id}`)
-                    .then((res) => {
-                        debugger;
-                        console.log(res.data)
-                        let tempList = {
-                            id: res.data.id,
-                            name: res.data.name,
-                            num: res.data.numOfMeetings,
-                            duration: res.data.durationOfMeeting,
-                            cost: res.data.cost,
-                            openingHours: res.data.OpeningHours,
-                            numberM: res.data.address.number,
-                            street: res.data.address.street,
-                            city: res.data.address.city
-                        }
-                        setServices(tempList);
-                    })
-                    .catch((err) => {
-                        debugger
-                        console.log(err);
-                    })
-            } catch (err) {
+async function getService() {
+    debugger
+    debugger;
+    try {
+        await axios.get(`https://meetings-test.herokuapp.com/service/${form.id}`)
+            .then((res) => {
+                debugger;
+                console.log(res.data)
+                let tempList = {
+                    id: res.data.id,
+                    name: res.data.name,
+                    num: res.data.numOfMeetings,
+                    duration: res.data.durationOfMeeting,
+                    cost: res.data.cost,
+                    openingHours: res.data.OpeningHours,
+                    numberM: res.data.address.number,
+                    street: res.data.address.street,
+                    city: res.data.address.city
+                }
+                setServices(tempList);
+            })
+            .catch((err) => {
+                debugger
                 console.log(err);
-            }
-        }
+            })
+    } catch (err) {
+        console.log(err);
+    }
+}
+    useEffect(() => {
+        
         getService();
     }, [form.id]);
     return (
