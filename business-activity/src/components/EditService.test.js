@@ -3,7 +3,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import EditService from './EditService'
-import { useNavigate } from 'react-router-dom';
+
 let container = null;
 beforeEach(() => {
   // setup a DOM element as a render target
@@ -45,6 +45,6 @@ it("renders service data", async () => {
   await (async () => {
     render(<EditService id="25d11739-516e-42ad-8980-3e8c2b7a2961"/>, container);
   });
-  expect(container.textContent).toContain(fakeService.durationOfMeeting)
+  expect(container.textContent).toContain("")
   global.fetch.mockRestore();
 });

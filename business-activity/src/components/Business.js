@@ -25,85 +25,38 @@ const style = {
 
 
 
-// export async function getBusiness() {
-//     let businessList = [];
-//     try {
-//         const res = axios.get("https://meetings-test.herokuapp.com/business").then(() => {
-//             businessList = res.data.map((item) => {
-//                 let b = {
-//                     id: item.id,
-//                     img: item.img,
-//                     userid: item.userid,
-//                     ownersName: item.businessDetails.ownersName,
-//                     businessName: item.businessDetails.businessName,
-//                     services: item.businessDetails.services
-//                 }
-//                 return b;
-//             })
-//         })
-//     } catch (err) {
-//         console.log(err);
-//     }
-//     return businessList;
-//     // const temp = [
-//     //     {
-//     //         id: '000',
-//     //         businessName: 'happy-life',
-//     //         ownersName: 'naama&Racheli&Ora',
-//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-//     //     },
-//     //     {
-//     //         id: '111',
-//     //         businessName: 'happy-life',
-//     //         ownersName: 'naama&Racheli&Ora',
-//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-//     //     },
-//     //     {
-//     //         id: '222',
-//     //         businessName: 'happy-life',
-//     //         ownersName: 'naama&Racheli&Ora',
-//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-//     //     },
-//     //     {
-//     //         id: '333',
-//     //         businessName: 'happy-life',
-//     //         ownersName: 'naama&Racheli&Ora',
-//     //         img: 'https://www.animatedimages.org/data/media/1309/animated-laughing-image-0022.gif'
-//     //     },
-//     // ];
-//     // return temp;
-// }
 export default function BusinessForUsers() {
     debugger
+    async function getBusiness() {
+        debugger;
+        try {
+           const res= await axios.get("https://meetings-test.herokuapp.com/business")
+            // .then((res) => {
+                let tempList = res.data.map((item) => {
+                    let b = {
+                        id: item.id,
+                        img: item.img,
+                        userid: item.userId,
+                        ownersName: item.ownersName,
+                        businessName: item.businessName,
+                        services: item.services
+                    }
+                    return b;
+                })
+                setBusinessList(tempList);
+                console.log(res.data)
+            // })
+            // .catch((err) => {
+            //     debugger
+            //     console.log(err);
+            //   })
+        } catch (err) {
+            console.log(err);
+        }
+    }
     const [businessList, setBusinessList] = useState();
     useEffect(() => {
-        async function getBusiness() {
-            debugger;
-            try {
-               const res= await axios.get("https://meetings-test.herokuapp.com/business")
-                // .then((res) => {
-                    let tempList = res.data.map((item) => {
-                        let b = {
-                            id: item.id,
-                            img: item.img,
-                            userid: item.userId,
-                            ownersName: item.ownersName,
-                            businessName: item.businessName,
-                            services: item.services
-                        }
-                        return b;
-                    })
-                    setBusinessList(tempList);
-                    console.log(res.data)
-                // })
-                // .catch((err) => {
-                //     debugger
-                //     console.log(err);
-                //   })
-            } catch (err) {
-                console.log(err);
-            }
-        }
+        
         getBusiness();
     },[]);
     // const navigate = useNavigate();
@@ -133,7 +86,7 @@ export default function BusinessForUsers() {
                 {
                     < Grid container spacing={{ xs: 2, md: 3, }}>
                         {businessList === undefined ? <p>no business</p> : businessList.map((item) => (
-                            <Grid item xs={2} sm={3} md={3} key={item.id}>
+                            <Grid item xs={2} sm={3} md={3} key={item.id}>                             
                                 <BusinessCard business={item} />
                             </Grid>
                         ))}
