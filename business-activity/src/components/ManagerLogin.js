@@ -24,7 +24,7 @@ export default function ManagerLogIn() {
     navigateAdmin();
     const verifyManager = async () => {
 
-        const ourId = 'd070e48f-77f2-4361-9aa4-25cdb6502cdc';
+        const ourId = '6145be68-adfa-422a-886a-8638df0b80cc';
         if (managerName === 'Naama&Ora' && managerPassword === 'NO') {
             setManagerId(ourId);
         }

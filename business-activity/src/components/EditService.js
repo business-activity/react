@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 
 
 export default function EditService() {
-    const managerId = ''
+    const managerId = '6145be68-adfa-422a-886a-8638df0b80cc'
     const [services, setServices] = useState([]);
     const location = useLocation();
     const from = location.state;
