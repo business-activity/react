@@ -7,11 +7,10 @@ import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
 
 export default function Meeting() {
-    debugger
+
     const location = useLocation();
     const from = location.state;
     async function getMeetings() {
-        debugger
         try {
             const res = await axios.get(`https://meetings-test.herokuapp.com/meeting?business_id=${from.businessId}`)
             let tempList = res.data.map((item) => {
@@ -25,7 +24,6 @@ export default function Meeting() {
                 }
                 return meeting;
             })
-            debugger
             setMeetingList(tempList);
             console.log(res.data)
         } catch (err) {

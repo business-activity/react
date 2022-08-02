@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 
 
 export default function EditService() {
-    const managerId = '6145be68-adfa-422a-886a-8638df0b80cc'
+    const managerId = 'f97f8c6f-83aa-4257-a1c1-433d1afd6fe2'
     const [services, setServices] = useState([]);
     const location = useLocation();
     const from = location.state;
@@ -93,7 +93,7 @@ export default function EditService() {
                 }
             });
     }
-    async function getService() {
+     async function getService() {
         try {
             await axios.get(`https://meetings-test.herokuapp.com/service/${from.id}`)
                 .then((res) => {

@@ -25,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <>BS"D Buusiness-Activity</>
+        <>BS"D Business-Activity</>
         <Routes>
           <Route path='/' element={<BusinessForUsers />} />
           <Route path='' element={<BusinessForUsers />} />
